@@ -1,0 +1,126 @@
+﻿<Controls:MetroWindow x:Class="Pyxie.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Pyxie"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="Pyxie" Height="372" Width="525"
+        Name="PyxieWindow" IsMaxRestoreButtonEnabled="False" ShowMaxRestoreButton="False" Closing="PyxieWindow_Closing" Loaded="PyxieWindow_Loaded" Icon="pixie.ico" >
+
+    <Grid Margin="5,5,5,50">
+        <TabControl Margin="5,5,5,-49" Background="#FF110202">
+            <TabItem x:Name="playerTab" Header="Players">
+                <Grid Margin="5,5,12,0" Background="#FF252525" Height="283" VerticalAlignment="Top">
+                    <ListBox x:Name="PeopleList"
+            	DisplayMemberPath="Name"
+            	IsSynchronizedWithCurrentItem="True"
+            	BorderThickness="1" Width="126" Margin="0,20,10,32" HorizontalAlignment="Right"
+                             ItemsSource="{Binding}" SelectionChanged="PeopleList_SelectionChanged"/>
+                    <Label Content="Process Selection" HorizontalContentAlignment="Center" Margin="336,-6,10,0" VerticalAlignment="Top" Width="126"/>
+                    <Grid Name="playerSettings" IsEnabled="False">
+                        <Grid Margin="10,10,165,221">
+                            <ToggleButton Width="55" IsChecked="{Binding UseGM}"
+                    		Height="55"
+                    		Margin="0,0,242,0"
+                    		Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top">
+                                <Rectangle Width="20"
+                    			Height="20"
+                    			Fill="{DynamicResource BlackBrush}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill"
+                    					Visual="{DynamicResource appbar_crown}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </ToggleButton>
+                            <ToggleButton Width="55" IsChecked="{Binding UseMaintenance}"
+                    		Margin="60,0,182,0"
+                    		Style="{DynamicResource MetroCircleToggleButtonStyle}" Height="55" VerticalAlignment="Top">
+                                <Rectangle Width="20"
+                    			Height="20"
+                    			Fill="{DynamicResource BlackBrush}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill"
+                    					Visual="{DynamicResource appbar_star_invincible}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </ToggleButton>
+                            <Label Content="GM" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,242,-29"/>
+                            <Label Content="Maint." HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="64,55,0,-29" Width="55"/>
+                            <ToggleButton Width="55" IsChecked="{Binding UseJaZero}"
+                    		Height="55"
+                    		Margin="120,0,122,0"
+                    		Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top">
+                                <Rectangle Width="20"
+                    			Height="20"
+                    			Fill="{DynamicResource BlackBrush}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill"
+                    					Visual="{DynamicResource appbar_key}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </ToggleButton>
+                            <Label Content="JA Zero" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="124,55,0,-29" Width="55"/>
+                            <ToggleButton Width="55" IsChecked="{Binding UseEngagedMode}"
+                    		Height="55"
+                    		Margin="180,0,62,0"
+                    		Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top">
+                                <Rectangle Width="20"
+                    			Height="20"
+                    			Fill="{DynamicResource BlackBrush}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill"
+                    					Visual="{DynamicResource appbar_marvel_avengers}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </ToggleButton>
+                            <Label Content="Combat" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="184,55,0,-29" Width="55" Height="26" VerticalAlignment="Top"/>
+                            <ToggleButton Width="55" IsChecked="{Binding UseClientBlock}"
+                    		Height="55"
+                    		Margin="240,0,2,0"
+                    		Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top">
+                                <Rectangle Width="20"
+                    			Height="20"
+                    			Fill="{DynamicResource BlackBrush}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill"
+                    					Visual="{DynamicResource appbar_cog}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </ToggleButton>
+                            <Label Content="Debug" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="244,55,-2,-29" Width="55"/>
+                        </Grid>
+                        <GridSplitter HorizontalAlignment="Left" Height="2" Margin="10,96,0,0" VerticalAlignment="Top" Width="316"/>
+                        <Grid Margin="10,131,315,32">
+                            <Button x:Name="nButton" Content="N" Margin="57,0,0,0" Focusable="False" HorizontalAlignment="Left" Width="33" Height="33" VerticalAlignment="Top" Click="nButton_Click" IsTabStop="False"/>
+                            <Button x:Name="wButton" Content="W" Margin="38,41,0,0" Focusable="False" HorizontalAlignment="Left" Width="33" Height="33" VerticalAlignment="Top" Click="wButton_Click" IsTabStop="False"/>
+                            <Button x:Name="sButton" Content="S" Margin="57,82,0,0" Focusable="False" HorizontalAlignment="Left" Width="33" Height="33" VerticalAlignment="Top" Click="sButton_Click" IsTabStop="False"/>
+                            <Button x:Name="nwButton" Content="NW" Margin="19,0,0,0" Focusable="False" Height="33" VerticalAlignment="Top" HorizontalAlignment="Left" Width="33" Click="nwButton_Click" IsTabStop="False"/>
+                            <Button x:Name="neButton" Content="NE" Margin="95,0,0,0" Focusable="False" Height="33" VerticalAlignment="Top" HorizontalAlignment="Left" Width="33" Click="neButton_Click" IsTabStop="False"/>
+                            <Button x:Name="eButton" Content="E" Margin="76,41,0,0" Focusable="False" HorizontalAlignment="Left" Width="33" Height="33" VerticalAlignment="Top" Click="eButton_Click" IsTabStop="False"/>
+                            <Button x:Name="dnButton" Content="DN" Margin="114,41,0,0" Focusable="False" HorizontalAlignment="Left" Width="33" Height="33" VerticalAlignment="Top" Click="dnButton_Click" IsTabStop="False"/>
+                            <Button x:Name="upButton" Content="UP" Margin="0,41,0,0" Focusable="False" HorizontalAlignment="Left" Width="33" Height="33" VerticalAlignment="Top" Click="upButton_Click" IsTabStop="False"/>
+                            <Button x:Name="swButton" Content="SW" Margin="19,82,0,0" Focusable="False" HorizontalAlignment="Left" Width="33" Height="33" VerticalAlignment="Top" Click="swButton_Click" IsTabStop="False"/>
+                            <Button x:Name="seButton" Content="SE" Margin="95,82,0,-13" Focusable="False" HorizontalAlignment="Left" Width="33" Height="33" VerticalAlignment="Top" Click="seButton_Click" IsTabStop="False"/>
+                        </Grid>
+                        <Label Content="Positional Adjustment" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="10,100,0,0" Width="147"/>
+                        <Slider x:Name="speedSlider" IsMoveToPointEnabled="True" HorizontalAlignment="Left" Margin="181,156,0,0" VerticalAlignment="Top" Width="145" Minimum="5.0" Maximum="32" Value="{Binding Settings.Speed}" Height="18" LargeChange="0" TickFrequency=".1" SmallChange=".1" IsSnapToTickEnabled="True"/>
+                        <Slider x:Name="speedSlider_Copy" IsMoveToPointEnabled="True" HorizontalAlignment="Left" Margin="181,210,0,0" VerticalAlignment="Top" Width="145" Minimum="5.0" Maximum="32" Value="{Binding Settings.Speed}" Height="18" LargeChange="0" TickFrequency=".1" SmallChange=".1" IsSnapToTickEnabled="True"/>
+                        <Label Content="Default:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,125,0,0" Width="74"/>
+                        <Label Content="Detected:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,179,0,0" Width="74"/>
+                        <CheckBox Content="Detect" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,233,0,0" IsChecked="{Binding Settings.UseDetection}"/>
+                        <CheckBox Content="Exclusion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="258,233,0,0" IsChecked="{Binding Settings.UseExclusions}"/>
+                        <Label Content="5.0" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="252,179,0,0" Width="74"/>
+                        <Label Content="5.0" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="252,125,0,0" Width="74"/>
+                        <CheckBox Content="Movement Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,104,0,0" Width="145" IsChecked="{Binding Settings.UseSpeed}"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Settings">
+            </TabItem>
+            <TabItem Header="Exclusions">
+            </TabItem>
+            <TabItem Header="About">
+                <TextBox IsReadOnly="True"  HorizontalAlignment="Left" TextWrapping="Wrap" Width="484" BorderBrush="Black" Text="Pyxie 1.0.0.0 © - Cairthenn (Cair)&#xA;&#xA;---------------------------------------------------------------------------------------&#xA;---------------------------------------------------------------------------------------&#xA;&#xA;Pyxie is free software: you can redistribute it and/or modify it &#xA;under the terms of the GNU General Public License as published by&#xA;the Free Software Foundation, either version 3 of the License, or&#xA;(at your option) any later version. &#xA;&#xA;Pyxie is distributed in the hope that it will be useful,&#xA;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xA;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the&#xA;GNU General Public License for more details.&#xA;&#xA;You should have received a copy of the GNU General Public License along with Pyxie If not, see &lt;http://www.gnu.org/licenses/&gt;." IsTabStop="False" Margin="5,5,5,5"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Controls:MetroWindow>
