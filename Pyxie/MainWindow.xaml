@@ -103,14 +103,16 @@
                         </Grid>
                         <Label Content="Positional Adjustment" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="10,100,0,0" Width="147"/>
                         <Slider x:Name="speedSlider" IsMoveToPointEnabled="True" HorizontalAlignment="Left" Margin="181,156,0,0" VerticalAlignment="Top" Width="145" Minimum="5.0" Maximum="32" Value="{Binding Settings.Speed}" Height="18" LargeChange="0" TickFrequency=".1" SmallChange=".1" IsSnapToTickEnabled="True"/>
-                        <Slider x:Name="speedSlider_Copy" IsMoveToPointEnabled="True" HorizontalAlignment="Left" Margin="181,210,0,0" VerticalAlignment="Top" Width="145" Minimum="5.0" Maximum="32" Value="{Binding Settings.Speed}" Height="18" LargeChange="0" TickFrequency=".1" SmallChange=".1" IsSnapToTickEnabled="True"/>
+                        <Slider x:Name="speedSlider_Copy" IsMoveToPointEnabled="True" HorizontalAlignment="Left" Margin="181,210,0,0" VerticalAlignment="Top" Width="145" Minimum="5.0" Maximum="32" Value="{Binding Settings.DetectedSpeed}" Height="18" LargeChange="0" TickFrequency=".1" SmallChange=".1" IsSnapToTickEnabled="True"/>
                         <Label Content="Default:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,125,0,0" Width="74"/>
                         <Label Content="Detected:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,179,0,0" Width="74"/>
                         <CheckBox Content="Detect" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,233,0,0" IsChecked="{Binding Settings.UseDetection}"/>
                         <CheckBox Content="Exclusion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="258,233,0,0" IsChecked="{Binding Settings.UseExclusions}"/>
-                        <Label Content="5.0" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="252,179,0,0" Width="74"/>
-                        <Label Content="5.0" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="252,125,0,0" Width="74"/>
-                        <CheckBox Content="Movement Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,104,0,0" Width="145" IsChecked="{Binding Settings.UseSpeed}"/>
+                        <TextBox x:Name="detectedSpeedVal" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="242,179,0,0" Width="55" Text="{Binding Settings.DetectedSpeed}"/>
+                        <TextBox x:Name="speedVal"  HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="242,125,0,0" Width="55" Text="{Binding Settings.Speed}"/>
+                        <CheckBox Content="Movement Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,104,0,0" Width="145" IsChecked="{Binding UseSpeed}"/>
+                        <Button Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="302,126,0,0"/>
+                        <Button Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="302,180,0,0"/>
                     </Grid>
                 </Grid>
             </TabItem>

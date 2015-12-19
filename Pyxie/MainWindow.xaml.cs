@@ -178,12 +178,9 @@ namespace Pyxie
                 {
                     foreach (Process FFXI in CurrentProcessList)
                     {
-                        // The process isn't responding, remove it 
+                        // The process isn't responding, ignore it
                         if (!FFXI.Responding)
-                        {
-                            ActiveProcessList.Remove(ActiveProcessList.First(P => P.Name == FFXI.MainWindowTitle));
                             continue;
-                        }
 
                         if (!ActiveProcessList.Any(P => P.Id == FFXI.Id))
                         {
@@ -228,6 +225,8 @@ namespace Pyxie
                         PeopleList.SelectedIndex = SavedIndex;
                 }));
         }
+
+
 
     }
 

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>pixie.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro">
       <HintPath>..\..\..\..\..\Documents\GitHub\MahApps.Metro\MahApps.Metro\bin\Release\NET45\MahApps.Metro.dll</HintPath>
@@ -70,6 +73,7 @@
     <Compile Include="FFXIStructures\Entity.cs" />
     <Compile Include="FFXIStructures\FFXIObject.cs" />
     <Compile Include="FFXIStructures\Zones.cs" />
+    <Compile Include="FloatConverter.cs" />
     <Compile Include="Player\Detection.cs" />
     <Compile Include="Player\Movement.cs" />
     <Compile Include="Player\Position.cs" />

@@ -58,6 +58,8 @@ namespace Pyxie
                         Speed = Settings.Speed;
                     }
                 }
+
+                Thread.Sleep(100);
             }
 
             Speed = SPEED_BASE;
