@@ -25,6 +25,8 @@ namespace Pyxie
 
 
                 }
+
+                Thread.Sleep(100);
             }
         }
 
