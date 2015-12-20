@@ -59,7 +59,7 @@ namespace Pyxie.FFXIStructures
             /// Bit flagged Int32: 
             /// Spawned, Enemy, Hidden, Dead
             /// </summary>
-            public EntityEnum.Flags3 Flags1 { get; set; }
+            public EntityEnum.Flags1 Flags1 { get; set; }
     
             /// <summary>
             /// Bit flagged Int32: 
@@ -67,7 +67,7 @@ namespace Pyxie.FFXIStructures
             /// Help, TempLogged, Linkshell ,ConnectionLost, 
             /// Sound, Object         
             /// </summary>
-            public EntityEnum.Flags3 Flags2 { get; set; }
+            public EntityEnum.Flags2 Flags2 { get; set; }
 
             /// <summary>
             /// Bit flagged Int32:

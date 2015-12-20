@@ -64,9 +64,13 @@ namespace Pyxie.FFXIStructures
 
                 MemoryHandler.WriteAddress(target, byteVal as byte[]);
             }
-            catch(AmbiguousMatchException)
+            catch(AmbiguousMatchException e)
             {
+                //Single byte
 
+                var byteArray = new byte[1];
+                byteArray[0] = Convert.ToByte(val);
+                MemoryHandler.WriteAddress(target, byteArray);
             }
         }
 

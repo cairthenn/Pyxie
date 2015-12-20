@@ -152,6 +152,11 @@ namespace Pyxie
                     this.playerSettings.DataContext = ActiveProcessList[this.PeopleList.SelectedIndex];
                     this.playerSettings.IsEnabled = true;
                 }
+                else
+                {
+                    this.playerSettings.DataContext = new Player();
+                    this.playerSettings.IsEnabled = false;
+                }
             }
         }
 

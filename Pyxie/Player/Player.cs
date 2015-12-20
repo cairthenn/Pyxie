@@ -62,17 +62,18 @@ namespace Pyxie
             this.PlayerDisplay.UpdateWithAddress(PlayerEntity.Display);
             this.PlayerBuffs.UpdateWithAddress(BuffPtr);
 
-            IntPtr ZoneCalcAddress = MemoryHandler.ResolvePointer(ZonePtr);
+            //This changed, figure out later
+            //IntPtr ZoneCalcAddress = MemoryHandler.ResolvePointer(ZonePtr);
 
-            if (ZoneCalcAddress == IntPtr.Zero)
-                this.Zone = -1;
-            else
-            {
-                int ZoneBase = (int) MemoryHandler.ResolvePointer(ZoneCalcAddress);
-                int ZoneOffset = (int)MemoryHandler.ResolvePointer(ZoneCalcAddress + 7);
+            //if (ZoneCalcAddress == IntPtr.Zero)
+            //    this.Zone = -1;
+            //else
+            //{
+            //    int ZoneBase = (int) MemoryHandler.ResolvePointer(ZoneCalcAddress);
+            //    int ZoneOffset = (int)MemoryHandler.ResolvePointer(ZoneCalcAddress + 7);
 
-                this.Zone = (short)MemoryHandler.ResolvePointer((IntPtr)(ZoneBase + ZoneOffset));
-            }
+            //    this.Zone = (short)MemoryHandler.ResolvePointer((IntPtr)(ZoneBase + ZoneOffset));
+            //}
 
         }
 
