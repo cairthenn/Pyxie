@@ -6,8 +6,8 @@
         Title="Pyxie" Height="372" Width="525"
         Name="PyxieWindow" IsMaxRestoreButtonEnabled="False" ShowMaxRestoreButton="False" Closing="PyxieWindow_Closing" Loaded="PyxieWindow_Loaded" Icon="pixie.ico" >
 
-    <Grid Margin="5,5,5,50">
-        <TabControl Margin="5,5,5,-49" Background="#FF110202">
+    <Grid Margin="5">
+        <TabControl Margin="5,5,5,5" Background="#FF110202" Height="317" VerticalAlignment="Top">
             <TabItem x:Name="playerTab" Header="Players">
                 <Grid Margin="5,5,12,0" Background="#FF252525" Height="283" VerticalAlignment="Top">
                     <ListBox x:Name="PeopleList"
@@ -116,13 +116,174 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Settings">
+            <TabItem Name="globalSettings" Header="Settings">
+                <Grid Margin="5,5,5,5" Background="#FF252525">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- JA Zero Detection Button -->
+
+                    <ToggleButton Grid.Column="0" Grid.Row="0" Width="55" IsChecked="{Binding UseJaZeroDetection}"
+            	Height="55"
+            	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
+                        <Rectangle Width="20"
+            		Height="20"
+            		Fill="{DynamicResource BlackBrush}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_key_old}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </ToggleButton>
+
+                    <!-- Positioning Detection Button -->
+
+                    <ToggleButton Grid.Column="1" Grid.Row="0" Width="55" IsChecked="{Binding UsePositioningDetection}"
+            	Height="55"
+            	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
+                        <Rectangle Width="20"
+            		Height="20"
+            		Fill="{DynamicResource BlackBrush}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_arrow_expand}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </ToggleButton>
+
+                    <!--Sneak Detection Button -->
+
+                    <ToggleButton Grid.Column="0" Grid.Row="1" Width="55" IsChecked="{Binding DetectionWithoutSneak}"
+            	Height="55"
+            	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
+                        <Rectangle Width="20"
+            		Height="20"
+            		Fill="{DynamicResource BlackBrush}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_music}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </ToggleButton>
+
+                    <!-- Invisible Detection Button -->
+
+                    <ToggleButton Grid.Column="1" Grid.Row="1" Width="55" IsChecked="{Binding DetectionWithoutInvisible}"
+            	Height="55"
+            	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
+                        <Rectangle Width="20"
+            		Height="20"
+            		Fill="{DynamicResource BlackBrush}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_magnify}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </ToggleButton>
+
+                    <!--Bound Movement Button -->
+
+                    <ToggleButton Grid.Column="0" Grid.Row="2" Width="55" IsChecked="{Binding UseBoundMovement}"
+            	Height="55"
+            	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
+                        <Rectangle Width="20"
+            		Height="20"
+            		Fill="{DynamicResource BlackBrush}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_transit_car}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </ToggleButton>
+
+                    <!-- Bound & Detected Movement Button -->
+
+                    <ToggleButton Grid.Column="1" Grid.Row="2" Width="55" IsChecked="{Binding UseBoundDetectedMovement}"
+            	Height="55"
+            	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
+                        <Rectangle Width="20"
+            		Height="20"
+            		Fill="{DynamicResource BlackBrush}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_transit_congestion}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </ToggleButton>
+
+                    <!-- Custom Position Button -->
+
+                    <ToggleButton Grid.Column="0" Grid.Row="3" Width="55" IsChecked="{Binding UseCustomDistance}"
+            	Height="55"
+            	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
+                        <Rectangle Width="20"
+            		Height="20"
+            		Fill="{DynamicResource BlackBrush}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_hourglass}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </ToggleButton>
+
+                    <!-- Zone Delay Button -->
+
+                    <ToggleButton Grid.Column="1" Grid.Row="3" Width="55" IsChecked="{Binding UseZoneDelay}"
+            	Height="55"
+            	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
+                        <Rectangle Width="20"
+            		Height="20"
+            		Fill="{DynamicResource BlackBrush}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_axis_three}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </ToggleButton>
+
+                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="70,10,10,10" Content="JA Zero Detection"/>
+                    <Label Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="70,10,10,10" Content="Positioning Detection"/>
+                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="70,10,10,10" Content="Detected Without Sneak"/>
+                    <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="70,10,10,10" Content="Detected Without Invisible"/>
+                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="70,10,10,10" Content="Bound Movement"/>
+                    <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="70,10,10,10" Content="Bound Movement While Detected " FontSize="10"/>
+                    <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="70,19,98,19" Content="Zone Delay"/>
+                    <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="70,18,71,21" Content="Custom Reposition" FontSize="11"/>
+                    <TextBox IsEnabled="{Binding UseZoneDleay}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="175,18,0,0" Width="55" Text="{Binding CustomDistance}" Grid.Row="3"/>
+                    <TextBox IsEnabled="{Binding UseCustomDistance}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="174,20,0,0" Width="55" Text="{Binding ZoneDelay}" Grid.Row="3" Grid.Column="1"/>
+
+
+                </Grid>
             </TabItem>
             <TabItem Header="Exclusions">
+                <Grid Name="exclusionsGrid" Margin="5,5,5,5">
+                    <!--<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Player Exclusions" VerticalAlignment="Center" Margin="56,19,373,226" Height="25" Width="50"/>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Exclusions" VerticalAlignment="Center" Margin="181,25,222,232" Height="13" Width="76"/>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Inclusions" VerticalAlignment="Center" Margin="334,19,97,226" Height="25" Width="48"/>
+                    <ListBox HorizontalAlignment="Right" Height="183" Margin="0,0,339,37" VerticalAlignment="Bottom" Width="119" BorderBrush="#FF040404" BorderThickness="1" x:Name="excludedPlayerBox" ItemsSource="{Binding ExcludedPlayers, Mode=TwoWay}" MouseDoubleClick="excludedPlayerBox_MouseDoubleClick" />
+                    <ListBox HorizontalAlignment="Right" Height="183" Margin="0,0,200,37" VerticalAlignment="Bottom" Width="119" BorderBrush="#FF040404" BorderThickness="1" x:Name="excludedZoneBox" ItemsSource="{Binding ExcludedZones, Mode=TwoWay}" MouseDoubleClick="excludedZoneBox_MouseDoubleClick" />
+                    <ListBox HorizontalAlignment="Right" Height="183" Margin="0,0,62,37" VerticalAlignment="Bottom" Width="119" BorderBrush="#FF040404" BorderThickness="1" x:Name="includedZoneBox" ItemsSource="{Binding IncludedZones, Mode=TwoWay}" MouseDoubleClick="includedZoneBox_MouseDoubleClick" />
+                    <TextBox Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="23,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="96" x:Name="excludedPlayerText" KeyDown="excludedPlayerText_KeyDown" IsTabStop="False"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="161,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95" x:Name="excludedZoneText" KeyDown="excludedZoneText_KeyDown" IsTabStop="False"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="300,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95" x:Name="includedZoneText" KeyDown="includedZoneText_KeyDown" IsTabStop="False"/>
+                    <Button Grid.Column="0" Content="+" HorizontalAlignment="Left" Margin="121,235,0,0" VerticalAlignment="Top" Width="24" Height="22" x:Name="excludedPlayerButton" Click="excludedPlayerButton_Click" IsTabStop="False"/>
+                    <Button Content="+" HorizontalAlignment="Left" Margin="259,235,0,0" VerticalAlignment="Top" Width="24" Height="22" x:Name="excludedZoneButton" Click="excludedZoneButton_Click" IsTabStop="False" ToolTip="Leave the text box blank to add the current zone."/>
+                    <Button Content="+" HorizontalAlignment="Left" Margin="398,235,0,0" VerticalAlignment="Top" Width="24" Height="22" x:Name="includedZoneButton" Click="includedZoneButton_Click" IsTabStop="False" ToolTip="Leave the text box blank to add the current zone."/>-->
+                </Grid>
             </TabItem>
             <TabItem Header="About">
                 <TextBox IsReadOnly="True"  HorizontalAlignment="Left" TextWrapping="Wrap" Width="484" BorderBrush="Black" Text="Pyxie 1.0.0.0 © - Cairthenn (Cair)&#xA;&#xA;---------------------------------------------------------------------------------------&#xA;---------------------------------------------------------------------------------------&#xA;&#xA;Pyxie is free software: you can redistribute it and/or modify it &#xA;under the terms of the GNU General Public License as published by&#xA;the Free Software Foundation, either version 3 of the License, or&#xA;(at your option) any later version. &#xA;&#xA;Pyxie is distributed in the hope that it will be useful,&#xA;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xA;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the&#xA;GNU General Public License for more details.&#xA;&#xA;You should have received a copy of the GNU General Public License along with Pyxie If not, see &lt;http://www.gnu.org/licenses/&gt;." IsTabStop="False" Margin="5,5,5,5"/>
             </TabItem>
+
+
         </TabControl>
     </Grid>
 </Controls:MetroWindow>

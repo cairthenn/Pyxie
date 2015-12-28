@@ -223,7 +223,7 @@ namespace Pyxie
                     // Silly work around: Change the data context to a new player to properly set up threads for a newly added player,
                     // switch to them, and then switch back if a previous player existed.
 
-                    playerSettings.DataContext = new Player();
+                    playerSettings.DataContext = null;
 
                     PeopleList.SelectedIndex = ActiveProcessList.Count - 1;
                     
