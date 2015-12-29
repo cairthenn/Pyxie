@@ -265,18 +265,18 @@
             </TabItem>
             <TabItem Header="Exclusions">
                 <Grid Name="exclusionsGrid" Margin="5,5,5,5">
-                    <!--<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Player Exclusions" VerticalAlignment="Center" Margin="56,19,373,226" Height="25" Width="50"/>
-                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Exclusions" VerticalAlignment="Center" Margin="181,25,222,232" Height="13" Width="76"/>
-                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Inclusions" VerticalAlignment="Center" Margin="334,19,97,226" Height="25" Width="48"/>
-                    <ListBox HorizontalAlignment="Right" Height="183" Margin="0,0,339,37" VerticalAlignment="Bottom" Width="119" BorderBrush="#FF040404" BorderThickness="1" x:Name="excludedPlayerBox" ItemsSource="{Binding ExcludedPlayers, Mode=TwoWay}" MouseDoubleClick="excludedPlayerBox_MouseDoubleClick" />
-                    <ListBox HorizontalAlignment="Right" Height="183" Margin="0,0,200,37" VerticalAlignment="Bottom" Width="119" BorderBrush="#FF040404" BorderThickness="1" x:Name="excludedZoneBox" ItemsSource="{Binding ExcludedZones, Mode=TwoWay}" MouseDoubleClick="excludedZoneBox_MouseDoubleClick" />
-                    <ListBox HorizontalAlignment="Right" Height="183" Margin="0,0,62,37" VerticalAlignment="Bottom" Width="119" BorderBrush="#FF040404" BorderThickness="1" x:Name="includedZoneBox" ItemsSource="{Binding IncludedZones, Mode=TwoWay}" MouseDoubleClick="includedZoneBox_MouseDoubleClick" />
-                    <TextBox Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="23,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="96" x:Name="excludedPlayerText" KeyDown="excludedPlayerText_KeyDown" IsTabStop="False"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="161,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95" x:Name="excludedZoneText" KeyDown="excludedZoneText_KeyDown" IsTabStop="False"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="300,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95" x:Name="includedZoneText" KeyDown="includedZoneText_KeyDown" IsTabStop="False"/>
-                    <Button Grid.Column="0" Content="+" HorizontalAlignment="Left" Margin="121,235,0,0" VerticalAlignment="Top" Width="24" Height="22" x:Name="excludedPlayerButton" Click="excludedPlayerButton_Click" IsTabStop="False"/>
-                    <Button Content="+" HorizontalAlignment="Left" Margin="259,235,0,0" VerticalAlignment="Top" Width="24" Height="22" x:Name="excludedZoneButton" Click="excludedZoneButton_Click" IsTabStop="False" ToolTip="Leave the text box blank to add the current zone."/>
-                    <Button Content="+" HorizontalAlignment="Left" Margin="398,235,0,0" VerticalAlignment="Top" Width="24" Height="22" x:Name="includedZoneButton" Click="includedZoneButton_Click" IsTabStop="False" ToolTip="Leave the text box blank to add the current zone."/>-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0"/>
+                    <ListBox Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="1"/>
+                    <ListBox Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="2"/>
+                    <TextBlock Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Player Exclusions" VerticalAlignment="Top" Margin="10,0"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Exclusions" VerticalAlignment="Bottom" Margin="10,-1,10,241"/>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Inclusions" VerticalAlignment="Bottom" Margin="10,-1,10,241"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="About">
