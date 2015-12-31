@@ -272,7 +272,7 @@
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="ExcludedPlayers" Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" ItemsSource="{Binding ExcludedPlayers}" MouseDoubleClick="ExcludedPlayers_MouseDoubleClick"/>
                     <ListBox x:Name="ExcludedZones" Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="1" ItemsSource="{Binding ExcludedZones}" MouseDoubleClick="ExcludedZones_MouseDoubleClick"/>
-                    <ListBox x:Name="IncludedZones" Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="2" MouseDoubleClick="IncludedZones_MouseDoubleClick"/>
+                    <ListBox x:Name="IncludedZones" Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="2" ItemsSource="{Binding IncludedZones}" MouseDoubleClick="IncludedZones_MouseDoubleClick"/>
                     <TextBlock Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Player Exclusions" VerticalAlignment="Top" Margin="10,0"/>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Exclusions" VerticalAlignment="Bottom" Margin="10,-1,10,241"/>
                     <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Inclusions" VerticalAlignment="Bottom" Margin="10,-1,10,241"/>

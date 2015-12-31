@@ -17,12 +17,12 @@ namespace Pyxie
             {
                 this.Update();
 
-                if(Globals.Instance.Pyxie.ExcludedZones.Any(z => Zones.ZoneMap[z].Contains(Zone)))
+                if(Globals.Instance.Pyxie.ExcludedZones.Any(z => Zones.Instance.ZoneMap[z].Contains(Zone)))
                 {
                     // Excluded Zone: No Detection
                     this.Detected = false;
                 }
-                else if(Globals.Instance.Pyxie.IncludedZones.Any(z => Zones.ZoneMap[z].Contains(Zone)))
+                else if(Globals.Instance.Pyxie.IncludedZones.Any(z => Zones.Instance.ZoneMap[z].Contains(Zone)))
                 {
                     // Included Zone: Always Detect
                     this.Detected = true;

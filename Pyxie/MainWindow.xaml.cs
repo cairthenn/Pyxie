@@ -244,11 +244,6 @@ namespace Pyxie
                 Globals.Instance.Pyxie.ExcludedPlayers.Add(this.ExcludedPlayersTextbox.Text);
                 this.ExcludedPlayersTextbox.Text = "";
             }
-            else
-            {
-                Globals.Instance.Pyxie.IncludedZones.Add(Zones.ZoneMap.FirstOrDefault(key => key.Any(ienum => ienum ==
-                    ActiveProcessList[PeopleList.SelectedIndex].Zone)).Key);
-            }
         }
 
         private void ExcludedZonesButton_Click(object sender, RoutedEventArgs e)
@@ -260,7 +255,7 @@ namespace Pyxie
             }
             else
             {
-                Globals.Instance.Pyxie.IncludedZones.Add(Zones.ZoneMap.FirstOrDefault(key => key.Any(ienum => ienum ==
+                Globals.Instance.Pyxie.ExcludedZones.Add(Zones.Instance.ZoneMap.FirstOrDefault(key => key.Any(ienum => ienum ==
                     ActiveProcessList[PeopleList.SelectedIndex].Zone)).Key);
             }
         }
@@ -271,6 +266,11 @@ namespace Pyxie
             {
                 Globals.Instance.Pyxie.IncludedZones.Add(this.IncludedZonesTextbox.Text);
                 this.IncludedZonesTextbox.Text = "";
+            }
+            else
+            {
+                Globals.Instance.Pyxie.IncludedZones.Add(Zones.Instance.ZoneMap.FirstOrDefault(key => key.Any(ienum => ienum ==
+                    ActiveProcessList[PeopleList.SelectedIndex].Zone)).Key);
             }
         }
 

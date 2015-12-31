@@ -22,7 +22,7 @@ namespace Pyxie.FFXIStructures
             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\areas.xml"))
             {
                 MessageBox.Show("Pyxie was unable to load your zone resources file. To use area detection,\r\nadd areas.xml from your resources folder or obtain the latest download.");
-                ZoneMap = Enumerable.Empty<Int16>().ToLookup(x => default(String));
+                ZoneMap = Enumerable.Empty<Int32>().ToLookup(x => default(String));
                 return;
             }
 
@@ -41,14 +41,24 @@ namespace Pyxie.FFXIStructures
             }
         }
 
-        public static ILookup<String, Int16> ZoneMap { get; set; }
+        public ILookup<String, Int32> ZoneMap { get; set; }
 
         public class a
         {
             [XmlAttribute]
-            public Int16 id;
+            public Int32 id;
             [XmlText]
             public String Name;
+        }
+
+        private static Zones mInstance;
+
+        /// <summary>
+        /// Gets the instance of this class.
+        /// </summary>
+        public static Zones Instance
+        {
+            get { return mInstance ?? (mInstance = new Zones()); }
         }
     }
 }

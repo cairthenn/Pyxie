@@ -21,7 +21,7 @@ namespace Pyxie
             this.MobArrayPosition = SignatureScanner.FindPattern(new byte[] { 0x66, 0xC7, 0x44, 0x24, 0x10, 0x79, 0x00, 0x50 }, "xxxxxxxx", 37);
 
             this.BuffPtr = MemoryHandler.ResolvePointer(SignatureScanner.FindPattern(new byte[] { 0xEB, 0x0E, 0x33, 0xDB, 0x8A, 0xF8, 0x8A, 0xD9, 0x66, 0x89, 0x1C, 0x55 }, "xxxxxxxxxxxx", 12));
-            this.ZonePtr = SignatureScanner.FindPattern(new byte[] { 0x8B, 0x81, 0xFF, 0xFF, 0xFF, 0xFF, 0x8B, 0x0D, 0xFF, 0xFF, 0xFF, 0xFF, 0x50, 0x8B, 0x91 }, "xx????xx????xxx", 8);
+            this.ZonePtr = SignatureScanner.FindPattern(new byte[] { 0x7C, 0xE1, 0x8B, 0x4E, 0x08, 0x8B, 0x15 }, "xxxxxxx", 7);
 
             var index = (short)MemoryHandler.ResolvePointer(MemoryHandler.ResolvePointer(this.MobArrayPosition) + 4);
             this.PlayerEntity = new Entity(MemoryHandler, MemoryHandler.ResolvePointer(MobArray + 4 * index));

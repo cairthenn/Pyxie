@@ -62,18 +62,12 @@ namespace Pyxie
             this.PlayerDisplay.UpdateWithAddress(PlayerEntity.Display);
             this.PlayerBuffs.UpdateWithAddress(BuffPtr);
 
-            //This changed, figure out later
-            //IntPtr ZoneCalcAddress = MemoryHandler.ResolvePointer(ZonePtr);
+            int ZoneTemp = (int) MemoryHandler.ResolvePointer(MemoryHandler.ResolvePointer(ZonePtr));
 
-            //if (ZoneCalcAddress == IntPtr.Zero)
-            //    this.Zone = -1;
-            //else
-            //{
-            //    int ZoneBase = (int) MemoryHandler.ResolvePointer(ZoneCalcAddress);
-            //    int ZoneOffset = (int)MemoryHandler.ResolvePointer(ZoneCalcAddress + 7);
-
-            //    this.Zone = (short)MemoryHandler.ResolvePointer((IntPtr)(ZoneBase + ZoneOffset));
-            //}
+            if (ZoneTemp > 0xFF)
+                Zone = ZoneTemp - 0x1BC;
+            else
+                Zone = ZoneTemp;
 
         }
 
@@ -151,9 +145,9 @@ namespace Pyxie
 
         public Entity PlayerStruct { get; set; }
 
-        public short Zone { get; set; }
+        public int Zone { get; set; }
 
-        public short PreviousZone { get; set; }
+        public int PreviousZone { get; set; }
 
         #endregion
 
