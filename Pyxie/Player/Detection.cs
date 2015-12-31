@@ -86,7 +86,7 @@ namespace Pyxie
 
                 if(Check != null)
                 {                    
-                    if(!Check.IsNPC && Check.Name.Length > 0 && Check.ID != this.PlayerEntity.ID && Check.Distance < 2500)
+                    if(!Check.IsNPC && Check.Name.Length > 0 && Check.ID != this.PlayerEntity.ID && Check.Distance < 2500 && ((Check.Flags1 & EntityEnum.Flags1.Hidden) == 0))
                     {
                         if(Settings.UseExclusions && Globals.Instance.Pyxie.ExcludedPlayers.Any(n => Check.Name.ToLower().Equals(n.ToLower())))
                         {
