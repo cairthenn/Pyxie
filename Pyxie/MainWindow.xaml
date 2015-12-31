@@ -13,7 +13,7 @@
                     <ListBox x:Name="PeopleList"
             	DisplayMemberPath="Name"
             	IsSynchronizedWithCurrentItem="True"
-            	BorderThickness="1" Width="126" Margin="0,20,10,32" HorizontalAlignment="Right"
+            	BorderThickness="1" Width="126" Margin="0,20,10,63" HorizontalAlignment="Right"
                              ItemsSource="{Binding}" SelectionChanged="PeopleList_SelectionChanged"/>
                     <Label Content="Process Selection" HorizontalContentAlignment="Center" Margin="336,-6,10,0" VerticalAlignment="Top" Width="126"/>
                     <Grid Name="playerSettings" IsEnabled="False">
@@ -113,6 +113,7 @@
                         <CheckBox Content="Movement Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,104,0,0" Width="145" IsChecked="{Binding UseSpeed}"/>
                         <Button Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="302,126,0,0"/>
                         <Button Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="302,180,0,0"/>
+                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding DetectedText}" VerticalAlignment="Top" Width="126" Margin="344,225,0,0" IsEnabled="False" />
                     </Grid>
                 </Grid>
             </TabItem>

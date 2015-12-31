@@ -1,14 +1,16 @@
 ﻿using Pyxie.FFXIStructures;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Pyxie
 {
-    public partial class Player
+    public partial class Player : INotifyPropertyChanged
     {
         public void AutoDetection()
         {
@@ -37,6 +39,7 @@ namespace Pyxie
                         {
                             for(int i = Globals.Instance.Pyxie.ZoneDelay; i > 0; i--)
                             {
+                                this.DetectedText = String.Format("Zone Delay: {0}", i);
                                 Thread.Sleep(1000);
                             }
                         }
@@ -48,11 +51,13 @@ namespace Pyxie
                     !PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Invisible")))
                 {
                     this.Detected = true;
+                    this.DetectedText = "Invisible Not Active";
                 }
                 else if (Globals.Instance.Pyxie.DetectionWithoutSneak &&
                     !PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Sneak")))
                 {
                     this.Detected = true;
+                    this.DetectedText = "Sneak Not Active";
                 }
                 else if(CheckForPlayers())
                 {
@@ -88,13 +93,16 @@ namespace Pyxie
                             Exclusion = true;
                             continue;
                         }
-                        else
+                        else                        
                         {
+                            this.DetectedText = String.Format("Detected: {0}", Check.Name);
                             return true;
                         }
                     }
                 }
             }
+
+           this.DetectedText = "Not Detected";
 
             return false;
         }
@@ -141,6 +149,10 @@ namespace Pyxie
             }
         }
 
+        private String detectedText;
+
+        public String DetectedText { get { return detectedText; } set { detectedText = value; RaisePropertyChanged(); } }
+
         /// <summary>
         /// Thread for detection.
         /// </summary>
@@ -157,6 +169,17 @@ namespace Pyxie
         /// </summary>
         public Boolean Exclusion { get; set; }
 
+        #endregion
+
+        #region "Implement INotifyPropertyChanged"
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void RaisePropertyChanged([CallerMemberName] string caller = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(caller));
+            }
+        }
         #endregion
     }
 
