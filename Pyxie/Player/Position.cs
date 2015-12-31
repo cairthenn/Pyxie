@@ -22,9 +22,9 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("Y", PlayerDisplay.Y + delta);
-            this.PlayerDisplay.Modify<float>("Y2", PlayerDisplay.Y2 + delta);
-            this.PlayerDisplay.Modify<float>("Y3", PlayerDisplay.Y3 + delta);
+            PlayerDisplay.Y     = PlayerDisplay.Y + delta;
+            PlayerDisplay.Y2    = PlayerDisplay.Y2 + delta;
+            PlayerDisplay.Y3    = PlayerDisplay.Y3 + delta;
         }
 
         public void MoveSouth()
@@ -41,9 +41,9 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("Y", PlayerDisplay.Y - delta);
-            this.PlayerDisplay.Modify<float>("Y2", PlayerDisplay.Y2 - delta);
-            this.PlayerDisplay.Modify<float>("Y3", PlayerDisplay.Y3 - delta);
+            PlayerDisplay.Y     = PlayerDisplay.Y - delta;
+            PlayerDisplay.Y2    = PlayerDisplay.Y2 - delta;
+            PlayerDisplay.Y3    = PlayerDisplay.Y3 - delta;
         }
 
         public void MoveEast()
@@ -60,9 +60,9 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("X", PlayerDisplay.X + delta);
-            this.PlayerDisplay.Modify<float>("X2", PlayerDisplay.X2 + delta);
-            this.PlayerDisplay.Modify<float>("X3", PlayerDisplay.X3 + delta);
+            PlayerDisplay.X     = PlayerDisplay.X + delta;
+            PlayerDisplay.X2    = PlayerDisplay.X2 + delta;
+            PlayerDisplay.X3    = PlayerDisplay.X3 + delta;
         }
 
         public void MoveWest()
@@ -79,9 +79,9 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("X", PlayerDisplay.X - delta);
-            this.PlayerDisplay.Modify<float>("X2", PlayerDisplay.X2 - delta);
-            this.PlayerDisplay.Modify<float>("X3", PlayerDisplay.X3 - delta);
+            PlayerDisplay.X     = PlayerDisplay.X - delta;
+            PlayerDisplay.X2    = PlayerDisplay.X2 - delta;
+            PlayerDisplay.X3    = PlayerDisplay.X3 - delta;
         }
 
         public void MoveDown()
@@ -98,9 +98,9 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("Z", PlayerDisplay.Z + delta);
-            this.PlayerDisplay.Modify<float>("Z2", PlayerDisplay.Z2 + delta);
-            this.PlayerDisplay.Modify<float>("Z3", PlayerDisplay.Z3 + delta);
+            PlayerDisplay.Z     = PlayerDisplay.Z + delta;
+            PlayerDisplay.Z2    = PlayerDisplay.Z2 + delta;
+            PlayerDisplay.Z3    = PlayerDisplay.Z3 + delta;
         }
 
         public void MoveUp()
@@ -117,9 +117,9 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("Z", PlayerDisplay.Z - delta);
-            this.PlayerDisplay.Modify<float>("Z2", PlayerDisplay.Z2 - delta);
-            this.PlayerDisplay.Modify<float>("Z3", PlayerDisplay.Z3 - delta);
+            PlayerDisplay.Z     = PlayerDisplay.Z - delta;
+            PlayerDisplay.Z2    = PlayerDisplay.Z2 - delta;
+            PlayerDisplay.Z3    = PlayerDisplay.Z3 - delta;
         }
 
         public void MoveNorthEast()
@@ -136,12 +136,12 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("Y", PlayerDisplay.Y + (delta / 2));
-            this.PlayerDisplay.Modify<float>("Y2", PlayerDisplay.Y2 + (delta / 2));
-            this.PlayerDisplay.Modify<float>("Y3", PlayerDisplay.Y3 + (delta / 2));
-            this.PlayerDisplay.Modify<float>("X", PlayerDisplay.X + (delta / 2));
-            this.PlayerDisplay.Modify<float>("X2", PlayerDisplay.X2 + (delta / 2));
-            this.PlayerDisplay.Modify<float>("X3", PlayerDisplay.X3 + (delta / 2));
+            PlayerDisplay.Y     = PlayerDisplay.Y + (delta / 2);
+            PlayerDisplay.Y2    = PlayerDisplay.Y2 + (delta / 2);
+            PlayerDisplay.Y3    = PlayerDisplay.Y3 + (delta / 2);
+            PlayerDisplay.X     = PlayerDisplay.X + (delta / 2);
+            PlayerDisplay.X2    = PlayerDisplay.X2 + (delta / 2);
+            PlayerDisplay.X3    = PlayerDisplay.X3 + (delta / 2);
         }
 
         public void MoveNorthWest()
@@ -158,12 +158,12 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("Y", PlayerDisplay.Y + (delta / 2));
-            this.PlayerDisplay.Modify<float>("Y2", PlayerDisplay.Y2 + (delta / 2));
-            this.PlayerDisplay.Modify<float>("Y3", PlayerDisplay.Y3 + (delta / 2));
-            this.PlayerDisplay.Modify<float>("X", PlayerDisplay.X - (delta / 2));
-            this.PlayerDisplay.Modify<float>("X2", PlayerDisplay.X2 - (delta / 2));
-            this.PlayerDisplay.Modify<float>("X3", PlayerDisplay.X3 - (delta / 2));
+            PlayerDisplay.Y     = PlayerDisplay.Y + (delta / 2);
+            PlayerDisplay.Y2    = PlayerDisplay.Y2 + (delta / 2);
+            PlayerDisplay.Y3    = PlayerDisplay.Y3 + (delta / 2);
+            PlayerDisplay.X     = PlayerDisplay.X - (delta / 2);
+            PlayerDisplay.X2    = PlayerDisplay.X2 - (delta / 2);
+            PlayerDisplay.X3    = PlayerDisplay.X3 - (delta / 2);
         }
 
         public void MoveSouthEast()
@@ -180,12 +180,12 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("Y", PlayerDisplay.Y - (delta / 2));
-            this.PlayerDisplay.Modify<float>("Y2", PlayerDisplay.Y2 - (delta / 2));
-            this.PlayerDisplay.Modify<float>("Y3", PlayerDisplay.Y3 - (delta / 2));
-            this.PlayerDisplay.Modify<float>("X", PlayerDisplay.X + (delta / 2));
-            this.PlayerDisplay.Modify<float>("X2", PlayerDisplay.X + (delta / 2));
-            this.PlayerDisplay.Modify<float>("X3", PlayerDisplay.X3 + (delta / 2));
+            PlayerDisplay.Y     = PlayerDisplay.Y - (delta / 2);
+            PlayerDisplay.Y2    = PlayerDisplay.Y2 - (delta / 2);
+            PlayerDisplay.Y3    = PlayerDisplay.Y3 - (delta / 2);
+            PlayerDisplay.X     = PlayerDisplay.X + (delta / 2);
+            PlayerDisplay.X2    = PlayerDisplay.X2 + (delta / 2);
+            PlayerDisplay.X3    = PlayerDisplay.X3 + (delta / 2);
         }
 
         public void MoveSouthWest()
@@ -202,12 +202,12 @@ namespace Pyxie
             else
                 delta = 3.0f;
 
-            this.PlayerDisplay.Modify<float>("Y", PlayerDisplay.Y - (delta / 2));
-            this.PlayerDisplay.Modify<float>("Y2", PlayerDisplay.Y2 + (delta / 2));
-            this.PlayerDisplay.Modify<float>("Y3", PlayerDisplay.Y3 - (delta / 2));
-            this.PlayerDisplay.Modify<float>("X", PlayerDisplay.X - (delta / 2));
-            this.PlayerDisplay.Modify<float>("X2", PlayerDisplay.X2 + (delta / 2));
-            this.PlayerDisplay.Modify<float>("X3", PlayerDisplay.X3 - (delta / 2));
+            PlayerDisplay.Y     = PlayerDisplay.Y - (delta / 2);
+            PlayerDisplay.Y2    = PlayerDisplay.Y2 - (delta / 2);
+            PlayerDisplay.Y3    = PlayerDisplay.Y3 - (delta / 2);
+            PlayerDisplay.X     = PlayerDisplay.X - (delta / 2);
+            PlayerDisplay.X2    = PlayerDisplay.X2 - (delta / 2);
+            PlayerDisplay.X3    = PlayerDisplay.X3 - (delta / 2);
         }
     }
 }

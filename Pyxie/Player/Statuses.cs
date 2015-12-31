@@ -18,12 +18,12 @@ namespace Pyxie
                 if (UseClientBlock)
                 {
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Debug) == 0)
-                        this.PlayerEntity.Modify<byte>("Status", (byte)EntityEnum.Status.Debug);
+                        PlayerEntity.Status = EntityEnum.Status.Debug;
                 }
                 else if(UseEngagedMode)
                 {
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Engaged) == 0)
-                        this.PlayerEntity.Modify<byte>("Status", (byte)EntityEnum.Status.Engaged);
+                        PlayerEntity.Status = EntityEnum.Status.Engaged;
                 }
 
                 Thread.Sleep(100);
@@ -33,9 +33,9 @@ namespace Pyxie
 
             //Returns you to dead status if you're dead, otherwise idle.
             if ((this.PlayerEntity.Flags1 & EntityEnum.Flags1.Dead) != 0)
-                this.PlayerEntity.Modify<byte>("Status", (byte)EntityEnum.Status.Dead);
+                PlayerEntity.Status = EntityEnum.Status.Dead;
             else
-                this.PlayerEntity.Modify<byte>("Status", (byte)EntityEnum.Status.Idle);
+                PlayerEntity.Status = EntityEnum.Status.Idle;
         }
 
 

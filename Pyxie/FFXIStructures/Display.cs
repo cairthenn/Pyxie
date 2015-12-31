@@ -16,16 +16,116 @@ namespace Pyxie.FFXIStructures
 
         }
 
-        public float X { get; set; }
-        public float Z { get; set; }
-        public float Y { get; set; }
-        public float X2 { get; set; }
-        public float Z2 { get; set; }
-        public float Y2 { get; set; }
-        public float X3 { get; set; }
-        public float Z3 { get; set; }
-        public float Y3 { get; set; }
-        public bool Freeze { get; set; }
+        public float X 
+        {
+            get
+            {
+                return Read<float>("X");
+            }
+            set
+            {
+                Modify<float>("X", value);
+            }
+        }
+        public float Z
+        {
+            get
+            {
+                return Read<float>("Z");
+            }
+            set
+            {
+                Modify<float>("Z", value);
+            }
+        }
+        public float Y
+        {
+            get
+            {
+                return Read<float>("Y");
+            }
+            set
+            {
+                Modify<float>("Y", value);
+            }
+        }
+        public float X2
+        {
+            get
+            {
+                return Read<float>("X2");
+            }
+            set
+            {
+                Modify<float>("X2", value);
+            }
+        }
+        public float Z2
+        {
+            get
+            {
+                return Read<float>("Z2");
+            }
+            set
+            {
+                Modify<float>("Z2", value);
+            }
+        }
+        public float Y2
+        {
+            get
+            {
+                return Read<float>("Y2");
+            }
+            set
+            {
+                Modify<float>("Y2", value);
+            }
+        }
+        public float X3
+        {
+            get
+            {
+                return Read<float>("X3");
+            }
+            set
+            {
+                Modify<float>("X3", value);
+            }
+        }
+        public float Z3
+        {
+            get
+            {
+                return Read<float>("Z3");
+            }
+            set
+            {
+                Modify<float>("Z3", value);
+            }
+        }
+        public float Y3
+        {
+            get
+            {
+                return Read<float>("Y3");
+            }
+            set
+            {
+                Modify<float>("Y3", value);
+            }
+        }
+        public bool Freeze
+        {
+            get
+            {
+                return Read<bool>("Freeze");
+            }
+            set
+            {
+                Modify<bool>("Freeze", value);
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Explicit, Pack = 1)]

@@ -51,7 +51,15 @@ namespace Pyxie
             public String Name;
         }
 
-        public IEnumerable<Int16> BuffList { get; set; }
+        public IEnumerable<Int16> BuffList
+        {
+            get
+            {
+                var temp = Read<BuffStruct>("BuffList");
+                return temp.BuffList.AsEnumerable();
+            }
+        }
+        
 
         public static ILookup<Int16, String> Lookup;
     }

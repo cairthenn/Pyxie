@@ -18,48 +18,117 @@ namespace Pyxie.FFXIStructures
             /// <summary>
             /// Player index, also their position in the mob array.
             /// </summary>
-            public ushort Index { get; set; }
+        public ushort Index
+        {
+            get
+            {
+                return Read<ushort>("Index");
+            }
+        }
     
             /// <summary>
             /// Player ID, unique across server.
             /// </summary>
-            public uint ID { get; set; }
+        public uint ID
+        {
+            get
+            {
+                return Read<uint>("ID");
+            }
+        }
     
             /// <summary>
             /// Boolean indicating whether the entity is a player.
             /// </summary>
-            public bool IsNPC { get; set; }
+        public bool IsNPC
+        {
+            get
+            {
+                return Read<bool>("IsNPC");
+            }
+        }
 
             /// <summary>
             /// Boolean for JaZero.
             /// </summary>
-            public bool Freeze { get; set; }
+        public bool Freeze
+        {
+            get
+            {
+                return Read<bool>("Freeze");
+            }
+            set
+            {
+                Modify<bool>("Freeze", value);
+            }
+        }
+
+        struct NameStr
+        {
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+            public String Name;
+        }
 
             /// <summary>
             /// Player name.
             /// </summary>
-            public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+
+                return Read<NameStr>("Name").Name;
+            }
+        }
 
             /// <summary>
             /// Pointer to the player's display structure.
             /// </summary>
-            public IntPtr Display { get; set; }
+        public IntPtr Display
+        {
+            get
+            {
+                return (IntPtr) Read<Int32>("Display");
+            }
+        }
 
             /// <summary>
             /// Current distance from this player.
             /// </summary>
-            public float Distance { get; set; }
+        public float Distance
+        {
+            get
+            {
+                return Read<float>("Distance");
+            }
+        }
 
             /// <summary>
             /// Bit flag indicating what sort of entity this is.
             /// </summary>
-            public byte MobType { get; set; }
+        public byte MobType
+        {
+            get
+            {
+                return Read<byte>("MobType");
+            }
+        }
 
             /// <summary>
             /// Bit flagged Int32: 
             /// Spawned, Enemy, Hidden, Dead
             /// </summary>
-            public EntityEnum.Flags1 Flags1 { get; set; }
+        public EntityEnum.Flags1 Flags1
+        {
+            get
+            {
+                return (EntityEnum.Flags1) Read<uint>("Flags1");
+            }
+            set
+            {
+                Modify<uint>("Flags1", (uint) value);
+            }
+        }
     
             /// <summary>
             /// Bit flagged Int32: 
@@ -67,31 +136,76 @@ namespace Pyxie.FFXIStructures
             /// Help, TempLogged, Linkshell ,ConnectionLost, 
             /// Sound, Object         
             /// </summary>
-            public EntityEnum.Flags2 Flags2 { get; set; }
+        public EntityEnum.Flags2 Flags2
+        {
+            get
+            {
+                return (EntityEnum.Flags2)Read<uint>("Flags2");
+            }
+            set
+            {
+                Modify<uint>("Flags2", (uint)value);
+            }
+        }
 
             /// <summary>
             /// Bit flagged Int32:
             /// Bazaar, Promotion, Promotion2,TempLogged2 
             /// GM, Maintenance, NameDeletion</summary>
-            public EntityEnum.Flags3 Flags3 { get; set; }
+        public EntityEnum.Flags3 Flags3
+        {
+            get
+            {
+                return (EntityEnum.Flags3)Read<uint>("Flags3");
+            }
+            set
+            {
+                Modify<uint>("Flags3", (uint)value);
+            }
+        }
 
 
             /// <summary>
             /// Player's movement speed.
             /// </summary>
-            public float Speed { get; set; }
-
+        public float Speed
+        {
+            get
+            {
+                return Read<float>("Speed");
+            }
+            set
+            {
+                Modify<float>("Speed", value);
+            }
+        }
             /// <summary>
             /// Player's current status:
             /// Idle, Dead, Engaged, Chocobo, etc.
             /// </summary>
-            public EntityEnum.Status Status { get; set; }
+        public EntityEnum.Status Status
+        {
+            get
+            {
+                return (EntityEnum.Status) Read<byte>("Status");
+            }
+            set
+            {
+                Modify<byte>("Status", (byte) value);
+            }
+        }
 
             /// <summary>
             /// Player's spawn type:
             /// Party member, alliance member, etc.
             /// </summary>
-            public byte SpawnType { get; set; }
+        public byte SpawnType
+        {
+            get
+            {
+                return Read<byte>("SpawnType");
+            }
+        }
     }
 
 

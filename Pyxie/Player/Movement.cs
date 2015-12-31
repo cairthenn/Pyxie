@@ -69,7 +69,7 @@ namespace Pyxie
         #region =="Properties"
 
         /// <summary>
-        /// Wrapper to write the desired speed to memory.
+        /// Wrapper to write proper values to memory
         /// </summary>
         /// <param name="speed"></param>
         public float Speed
@@ -81,11 +81,11 @@ namespace Pyxie
             set
             {
                 if (value < SPEED_BASE && value != 0)
-                    this.PlayerEntity.Modify<float>("Speed", SPEED_BASE);
+                    this.PlayerEntity.Speed = SPEED_BASE;
                 else if (value > SPEED_MAX)
-                    this.PlayerEntity.Modify<float>("Speed", SPEED_MAX);
+                    this.PlayerEntity.Speed = SPEED_MAX;
                 else
-                    this.PlayerEntity.Modify<float>("Speed", value);
+                    this.PlayerEntity.Speed = value;
 
             }
         }

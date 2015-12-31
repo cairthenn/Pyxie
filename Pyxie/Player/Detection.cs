@@ -79,16 +79,19 @@ namespace Pyxie
             {
                 Entity Check = GetEntityByIndex(index);
 
-                if(Check != null && !Check.IsNPC && Check.Name.Length > 0 && Check.ID != this.PlayerEntity.ID && Check.Distance < 2500)
+                if(Check != null)
                 {
-                    if(Settings.UseExclusions && Globals.Instance.Pyxie.ExcludedPlayers.Any(n => Check.Name.ToLower().Equals(n.ToLower())))
+                    if(!Check.IsNPC && Check.Name.Length > 0 && Check.ID != this.PlayerEntity.ID && Check.Distance < 2500)
                     {
-                        Exclusion = true;
-                        continue;
-                    }
-                    else
-                    {
-                        return true;
+                        if(Settings.UseExclusions && Globals.Instance.Pyxie.ExcludedPlayers.Any(n => Check.Name.ToLower().Equals(n.ToLower())))
+                        {
+                            Exclusion = true;
+                            continue;
+                        }
+                        else
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -107,7 +110,7 @@ namespace Pyxie
         /// <summary>
         /// Constant referring to the total possible entries in the MobArray.
         /// </summary>
-        public const int NPC_MAP_SIZE = 2048;
+        public const int NPC_MAP_SIZE = 4096;
 
         #region "Properties"
 

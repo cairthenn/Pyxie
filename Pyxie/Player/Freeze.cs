@@ -19,8 +19,8 @@ namespace Pyxie
                 {
                     if (UseJaZero)
                     {
-                        this.PlayerDisplay.Modify<bool>("Freeze", false);
-                        this.PlayerEntity.Modify<bool>("Freeze", false);
+                        PlayerDisplay.Freeze = false;
+                        PlayerEntity.Freeze = false;
                     }
 
 

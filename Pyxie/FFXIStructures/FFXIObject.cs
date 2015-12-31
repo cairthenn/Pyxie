@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Pyxie.Memory;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Pyxie.FFXIStructures
 {
@@ -20,21 +22,6 @@ namespace Pyxie.FFXIStructures
         internal virtual void UpdateWithAddress(IntPtr baseAddress)
         {
             BaseAddress = baseAddress;
-
-            T objStruct = StructFromPtr<T>(baseAddress);
-
-            foreach (var field in typeof(T).GetFields(
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
-            {
-                PropertyInfo prop = GetType().GetProperty(field.Name);
-
-                if (prop != null)
-                {
-                    Object val = field.GetValue(objStruct);
-                    prop.SetValue(this, val);
-                }
-
-            }
         }
 
         private TU StructFromPtr<TU>(IntPtr address)
@@ -51,6 +38,31 @@ namespace Pyxie.FFXIStructures
             }
 
             return structure;
+        }
+
+
+        /// <summary>
+        /// Reads a value of specified field from memory. Does NOT support type TX with unspecified size
+        /// </summary>
+        /// <typeparam name="TX"></typeparam>
+        /// <param name="field"></param>
+        /// <returns></returns>
+        internal virtual TX Read<TX>(string field, int offset = 0)
+        {
+            IntPtr target = IntPtr.Add(BaseAddress, (int)Marshal.OffsetOf(typeof(T), field));
+
+            int bytesRead;
+            byte[] _c = MemoryHandler.ReadAdress(target, (uint)Marshal.SizeOf(typeof(TX)), out bytesRead);
+
+
+            GCHandle handle = GCHandle.Alloc(_c, GCHandleType.Pinned);
+            TX structure = (TX)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(TX));
+            handle.Free();
+
+            return structure;
+
+
+            
         }
 
         internal virtual void Modify<TX>(string field, TX val)
