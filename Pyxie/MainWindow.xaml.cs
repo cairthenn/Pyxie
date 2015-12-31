@@ -18,6 +18,7 @@ using System.Threading;
 using MahApps.Metro;
 using System.IO;
 using System.Xml.Serialization;
+using Pyxie.FFXIStructures;
 
 namespace Pyxie
 {
@@ -62,6 +63,8 @@ namespace Pyxie
             ProcessThread.Start();
 
             this.PeopleList.DataContext = ActiveProcessList;
+            this.GlobalSettings.DataContext = Globals.Instance.Pyxie;
+            this.ExclusionsSettings.DataContext = Globals.Instance.Pyxie;
         }
 
         private void PyxieWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -231,6 +234,85 @@ namespace Pyxie
                         PeopleList.SelectedIndex = SavedIndex;
                 }));
         }
+
+        #region "Exclusion Helpers"
+
+        private void ExcludedPlayersButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ExcludedPlayersTextbox.Text.Length > 0)
+            {
+                Globals.Instance.Pyxie.ExcludedPlayers.Add(this.ExcludedPlayersTextbox.Text);
+                this.ExcludedPlayersTextbox.Text = "";
+            }
+            else
+            {
+                Globals.Instance.Pyxie.IncludedZones.Add(Zones.ZoneMap.FirstOrDefault(key => key.Any(ienum => ienum ==
+                    ActiveProcessList[PeopleList.SelectedIndex].Zone)).Key);
+            }
+        }
+
+        private void ExcludedZonesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.ExcludedZonesTextbox.Text.Length > 0)
+            {
+                Globals.Instance.Pyxie.ExcludedZones.Add(this.ExcludedZonesTextbox.Text);
+                this.ExcludedZonesTextbox.Text = "";
+            }
+            else
+            {
+                Globals.Instance.Pyxie.IncludedZones.Add(Zones.ZoneMap.FirstOrDefault(key => key.Any(ienum => ienum ==
+                    ActiveProcessList[PeopleList.SelectedIndex].Zone)).Key);
+            }
+        }
+
+        private void IncludedZonesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.IncludedZonesTextbox.Text.Length > 0)
+            {
+                Globals.Instance.Pyxie.IncludedZones.Add(this.IncludedZonesTextbox.Text);
+                this.IncludedZonesTextbox.Text = "";
+            }
+        }
+
+        private void ExcludedPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if ((uint)this.ExcludedPlayers.SelectedIndex < Globals.Instance.Pyxie.ExcludedPlayers.Count)
+                Globals.Instance.Pyxie.ExcludedPlayers.RemoveAt(this.ExcludedPlayers.SelectedIndex);
+        }
+
+        private void ExcludedZones_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if ((uint)this.ExcludedZones.SelectedIndex < Globals.Instance.Pyxie.ExcludedZones.Count)
+                Globals.Instance.Pyxie.ExcludedZones.RemoveAt(this.ExcludedZones.SelectedIndex);
+        }
+
+        private void IncludedZones_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if ((uint)this.IncludedZones.SelectedIndex < Globals.Instance.Pyxie.IncludedZones.Count)
+                Globals.Instance.Pyxie.IncludedZones.RemoveAt(this.IncludedZones.SelectedIndex);
+        }
+
+        private void ExcludedPlayersTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                ExcludedPlayersButton_Click(sender, e);
+        }
+
+        private void ExcludedZonesTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                ExcludedZonesButton_Click(sender, e);
+        }
+
+        private void IncludedZonesTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                ExcludedZonesButton_Click(sender, e);
+        }
+
+        #endregion
+
+
 
 
 

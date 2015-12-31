@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:Pyxie"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="Pyxie" Height="372" Width="525"
-        Name="PyxieWindow" IsMaxRestoreButtonEnabled="False" ShowMaxRestoreButton="False" Closing="PyxieWindow_Closing" Loaded="PyxieWindow_Loaded" Icon="pixie.ico" >
+        Name="PyxieWindow" IsMaxRestoreButtonEnabled="False" ShowMaxRestoreButton="False" Closing="PyxieWindow_Closing" Loaded="PyxieWindow_Loaded" Icon="pixie.ico" ResizeMode="CanMinimize" >
 
     <Grid Margin="5">
         <TabControl Margin="5,5,5,5" Background="#FF110202" Height="317" VerticalAlignment="Top">
@@ -18,7 +18,7 @@
                     <Label Content="Process Selection" HorizontalContentAlignment="Center" Margin="336,-6,10,0" VerticalAlignment="Top" Width="126"/>
                     <Grid Name="playerSettings" IsEnabled="False">
                         <Grid Margin="10,10,165,221">
-                            <ToggleButton Width="55" IsChecked="{Binding UseGM}"
+                            <ToggleButton Width="55" IsChecked="{Binding UseGM}" IsEnabled="False" ToolTip="Temporarily not implemented due to high danger and detectability."
                     		Height="55"
                     		Margin="0,0,242,0"
                     		Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top">
@@ -31,7 +31,7 @@
                                     </Rectangle.OpacityMask>
                                 </Rectangle>
                             </ToggleButton>
-                            <ToggleButton Width="55" IsChecked="{Binding UseMaintenance}"
+                            <ToggleButton Width="55" IsChecked="{Binding UseMaintenance}" IsEnabled="False" ToolTip="Temporarily not implemented due to high danger and detectability."
                     		Margin="60,0,182,0"
                     		Style="{DynamicResource MetroCircleToggleButtonStyle}" Height="55" VerticalAlignment="Top">
                                 <Rectangle Width="20"
@@ -116,7 +116,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Name="globalSettings" Header="Settings">
+            <TabItem Name="GlobalSettings" Header="Settings">
                 <Grid Margin="5,5,5,5" Background="#FF252525">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -219,9 +219,9 @@
                         </Rectangle>
                     </ToggleButton>
 
-                    <!-- Custom Position Button -->
+                    <!-- Zone Delay Button -->
 
-                    <ToggleButton Grid.Column="0" Grid.Row="3" Width="55" IsChecked="{Binding UseCustomDistance}"
+                    <ToggleButton Grid.Column="0" Grid.Row="3" Width="55" IsChecked="{Binding UseZoneDelay}"
             	Height="55"
             	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
                         <Rectangle Width="20"
@@ -234,9 +234,9 @@
                         </Rectangle>
                     </ToggleButton>
 
-                    <!-- Zone Delay Button -->
+                    <!-- Custom Position Button -->
 
-                    <ToggleButton Grid.Column="1" Grid.Row="3" Width="55" IsChecked="{Binding UseZoneDelay}"
+                    <ToggleButton Grid.Column="1" Grid.Row="3" Width="55" IsChecked="{Binding UseCustomPosition}"
             	Height="55"
             	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
                         <Rectangle Width="20"
@@ -257,25 +257,31 @@
                     <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="70,10,10,10" Content="Bound Movement While Detected " FontSize="10"/>
                     <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="70,19,98,19" Content="Zone Delay"/>
                     <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="70,18,71,21" Content="Custom Reposition" FontSize="11"/>
-                    <TextBox IsEnabled="{Binding UseZoneDleay}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="175,18,0,0" Width="55" Text="{Binding CustomDistance}" Grid.Row="3"/>
+                    <TextBox IsEnabled="{Binding UseZoneDelay}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="175,18,0,0" Width="55" Text="{Binding CustomDistance}" Grid.Row="3"/>
                     <TextBox IsEnabled="{Binding UseCustomDistance}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="174,20,0,0" Width="55" Text="{Binding ZoneDelay}" Grid.Row="3" Grid.Column="1"/>
 
 
                 </Grid>
             </TabItem>
             <TabItem Header="Exclusions">
-                <Grid Name="exclusionsGrid" Margin="5,5,5,5">
+                <Grid Name="ExclusionsSettings" Margin="5,5,5,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <ListBox Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0"/>
-                    <ListBox Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="1"/>
-                    <ListBox Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="2"/>
+                    <ListBox x:Name="ExcludedPlayers" Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" ItemsSource="{Binding ExcludedPlayers}" MouseDoubleClick="ExcludedPlayers_MouseDoubleClick"/>
+                    <ListBox x:Name="ExcludedZones" Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="1" ItemsSource="{Binding ExcludedZones}" MouseDoubleClick="ExcludedZones_MouseDoubleClick"/>
+                    <ListBox x:Name="IncludedZones" Height="200" VerticalAlignment="Top" BorderThickness="1" Margin="10,20,10,0" Grid.Column="2" MouseDoubleClick="IncludedZones_MouseDoubleClick"/>
                     <TextBlock Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Player Exclusions" VerticalAlignment="Top" Margin="10,0"/>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Exclusions" VerticalAlignment="Bottom" Margin="10,-1,10,241"/>
                     <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI" Text="Zone Inclusions" VerticalAlignment="Bottom" Margin="10,-1,10,241"/>
+                    <TextBox x:Name="ExcludedPlayersTextbox" Height="23" TextWrapping="Wrap" Text="" Margin="10,225,36,5" KeyDown="ExcludedPlayersTextbox_KeyDown"/>
+                    <TextBox x:Name="ExcludedZonesTextbox" Height="23" TextWrapping="Wrap" Text="" Margin="10,225,36,5" Grid.Column="1" KeyDown="ExcludedZonesTextbox_KeyDown"/>
+                    <TextBox x:Name="IncludedZonesTextbox" Height="23" TextWrapping="Wrap" Text="" Margin="10,225,35,5" Grid.Column="2" KeyDown="IncludedZonesTextbox_KeyDown"/>
+                    <Button x:Name="ExcludedPlayersButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="21" Margin="130,225,0,0" Click="ExcludedPlayersButton_Click"/>
+                    <Button x:Name="ExcludedZonesButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="21" Margin="130,225,0,0" Grid.Column="1" Click="ExcludedZonesButton_Click"/>
+                    <Button x:Name="IncludedZonesButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="21" Margin="130,225,0,0" Grid.Column="2" Click="IncludedZonesButton_Click"/>
 
                 </Grid>
             </TabItem>
