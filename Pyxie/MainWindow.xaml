@@ -18,7 +18,7 @@
                     <Label Content="Process Selection" HorizontalContentAlignment="Center" Margin="336,-6,10,0" VerticalAlignment="Top" Width="126"/>
                     <Grid Name="playerSettings" IsEnabled="False">
                         <Grid Margin="10,10,165,221">
-                            <ToggleButton Width="55" IsChecked="{Binding UseGM}" IsEnabled="False" ToolTip="Temporarily not implemented due to high danger and detectability."
+                            <ToggleButton Width="55" IsChecked="{Binding UseGM}" IsEnabled="{Binding Settings.DangerMode}"
                     		Height="55"
                     		Margin="0,0,242,0"
                     		Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top">
@@ -31,7 +31,7 @@
                                     </Rectangle.OpacityMask>
                                 </Rectangle>
                             </ToggleButton>
-                            <ToggleButton Width="55" IsChecked="{Binding UseMaintenance}" IsEnabled="False" ToolTip="Temporarily not implemented due to high danger and detectability."
+                            <ToggleButton Width="55" IsChecked="{Binding UseMaintenance}" IsEnabled="{Binding Settings.DangerMode}"
                     		Margin="60,0,182,0"
                     		Style="{DynamicResource MetroCircleToggleButtonStyle}" Height="55" VerticalAlignment="Top">
                                 <Rectangle Width="20"
@@ -287,7 +287,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="About">
-                <TextBox IsReadOnly="True"  HorizontalAlignment="Left" TextWrapping="Wrap" Width="484" BorderBrush="Black" Text="Pyxie 1.0.0.0 © - Cairthenn (Cair)&#xA;&#xA;---------------------------------------------------------------------------------------&#xA;---------------------------------------------------------------------------------------&#xA;&#xA;Pyxie is free software: you can redistribute it and/or modify it &#xA;under the terms of the GNU General Public License as published by&#xA;the Free Software Foundation, either version 3 of the License, or&#xA;(at your option) any later version. &#xA;&#xA;Pyxie is distributed in the hope that it will be useful,&#xA;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xA;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the&#xA;GNU General Public License for more details.&#xA;&#xA;You should have received a copy of the GNU General Public License along with Pyxie If not, see &lt;http://www.gnu.org/licenses/&gt;." IsTabStop="False" Margin="5,5,5,5"/>
+                <TextBox IsReadOnly="True"  HorizontalAlignment="Left" TextWrapping="Wrap" Width="484" BorderBrush="Black" Text="Pyxie 1.0.0.0 © - Cairthenn (Cair)&#xA;&#xD;&#xA;---------------------------------------------------------------------------------------&#xA;---------------------------------------------------------------------------------------&#xD;&#xA;Disclaimers: &#xD;&#xA;&#xD;&#xA;-This software is provided for educational purposes only. I am not&#xD;&#xA;responsible for what you do with it.&#xD;&#xA;&#xD;&#xA;-GM and Maintenance flags are disabled by default because they are directly&#xD;&#xA;detectable and will get you banned if you don't know what you're doing.&#xD;&#xA;However, you can enable them on a per-character basis by changing the&#xD;&#xA;&quot;DangerMode&quot; setting to true in the respective setting XML. I won't be adding&#xD;&#xA;it as a GUI feature.&#xD;&#xA;&#xD;&#xA;-All FFXI content and images © 2002-2015 SQUARE ENIX CO., LTD. &#xD;&#xA;FINAL FANTASY is a registered trademark of Square Enix Co., Ltd.&#xD;&#xA;&#xA;---------------------------------------------------------------------------------------&#xA;---------------------------------------------------------------------------------------&#xA;&#xA;Pyxie is free software: you can redistribute it and/or modify it &#xA;under the terms of the GNU General Public License as published by&#xA;the Free Software Foundation, either version 3 of the License, or&#xA;(at your option) any later version. &#xA;&#xA;Pyxie is distributed in the hope that it will be useful,&#xA;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xA;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the&#xA;GNU General Public License for more details.&#xA;&#xA;You should have received a copy of the GNU General Public License along with Pyxie If not, see &lt;http://www.gnu.org/licenses/&gt;." IsTabStop="False" Margin="5,5,5,5"/>
             </TabItem>
 
 

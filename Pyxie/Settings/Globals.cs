@@ -170,7 +170,6 @@ namespace Pyxie
         [XmlArray]
         [XmlArrayItem(ElementName = "Exclude")]
         public ObservableCollection<String> ExcludedPlayers { get; set; }
-            
 
     }
 }

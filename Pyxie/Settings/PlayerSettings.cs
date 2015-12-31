@@ -16,8 +16,10 @@ namespace Pyxie
         private float detectedSpeed_;
         private float speed_;
         private bool useGm_;
+        private bool useMaintenance_;
         private bool useEngagedMode_;
         private bool useClientBlock_;
+        private bool dangerMode_;
 
 
 
@@ -57,6 +59,12 @@ namespace Pyxie
             set { useGm_ = value; RaisePropertyChanged(); }
         }
 
+        public bool UseMaintenance
+        {
+            get { return useMaintenance_; }
+            set { useMaintenance_ = value; RaisePropertyChanged(); }
+        }
+
         public bool UseEngagedMode
         {
             get { return useEngagedMode_; }
@@ -67,6 +75,12 @@ namespace Pyxie
         {
             get { return useClientBlock_; }
             set { useClientBlock_ = value; RaisePropertyChanged(); }
+        }
+
+        public bool DangerMode
+        {
+            get { return dangerMode_; }
+            set { dangerMode_ = value; RaisePropertyChanged(); }
         }
 
 
@@ -81,6 +95,8 @@ namespace Pyxie
             }
         }
         #endregion
+
+
 
     }
 }

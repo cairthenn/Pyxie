@@ -75,6 +75,7 @@
     <Compile Include="FFXIStructures\Zones.cs" />
     <Compile Include="FloatConverter.cs" />
     <Compile Include="Player\Detection.cs" />
+    <Compile Include="Player\Flags.cs" />
     <Compile Include="Player\Movement.cs" />
     <Compile Include="Player\Position.cs" />
     <Compile Include="Player\Signatures.cs" />
