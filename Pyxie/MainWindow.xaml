@@ -236,7 +236,7 @@
 
                     <!-- Custom Position Button -->
 
-                    <ToggleButton Grid.Column="1" Grid.Row="3" Width="55" IsChecked="{Binding UseCustomPosition}"
+                    <ToggleButton Grid.Column="1" Grid.Row="3" Width="55" IsChecked="{Binding UseCustomDistance}"
             	Height="55"
             	Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top" Margin="10,10,175,0">
                         <Rectangle Width="20"
@@ -257,8 +257,8 @@
                     <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="70,10,10,10" Content="Bound Movement While Detected " FontSize="10"/>
                     <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="70,19,98,19" Content="Zone Delay"/>
                     <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="70,18,71,21" Content="Custom Reposition" FontSize="11"/>
-                    <TextBox IsEnabled="{Binding UseZoneDelay}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="175,18,0,0" Width="55" Text="{Binding CustomDistance}" Grid.Row="3"/>
-                    <TextBox IsEnabled="{Binding UseCustomDistance}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="174,20,0,0" Width="55" Text="{Binding ZoneDelay}" Grid.Row="3" Grid.Column="1"/>
+                    <TextBox IsEnabled="{Binding UseZoneDelay}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="175,18,0,0" Width="55" Text="{Binding ZoneDelay}" Grid.Row="3"/>
+                    <TextBox IsEnabled="{Binding UseCustomDistance}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="174,20,0,0" Width="55" Text="{Binding CustomDistance}" Grid.Row="3" Grid.Column="1"/>
 
 
                 </Grid>
