@@ -106,7 +106,7 @@
                         <Slider x:Name="speedSlider_Copy" IsMoveToPointEnabled="True" HorizontalAlignment="Left" Margin="181,210,0,0" VerticalAlignment="Top" Width="145" Minimum="5.0" Maximum="32" Value="{Binding Settings.DetectedSpeed}" Height="18" LargeChange="0" TickFrequency=".1" SmallChange=".1" IsSnapToTickEnabled="True"/>
                         <Label Content="Default:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,125,0,0" Width="74"/>
                         <Label Content="Detected:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,179,0,0" Width="74"/>
-                        <CheckBox Content="Detect" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,233,0,0" IsChecked="{Binding Settings.UseDetection}"/>
+                        <CheckBox Content="Detect" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,233,0,0" IsChecked="{Binding UseDetection}"/>
                         <CheckBox Content="Exclusion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="258,233,0,0" IsChecked="{Binding Settings.UseExclusions}"/>
                         <TextBox x:Name="detectedSpeedVal" HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="242,179,0,0" Width="55" Text="{Binding Settings.DetectedSpeed}"/>
                         <TextBox x:Name="speedVal"  HorizontalAlignment="Left" HorizontalContentAlignment="Right" VerticalAlignment="Top" Margin="242,125,0,0" Width="55" Text="{Binding Settings.Speed}"/>

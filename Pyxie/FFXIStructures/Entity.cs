@@ -44,7 +44,7 @@ namespace Pyxie.FFXIStructures
         {
             get
             {
-                return Read<bool>("IsNPC");
+                return Read<byte>("IsNPC") != 0;
             }
         }
 
@@ -55,7 +55,7 @@ namespace Pyxie.FFXIStructures
         {
             get
             {
-                return Read<bool>("Freeze");
+                return Read<byte>("Freeze") != 0;
             }
             set
             {
@@ -63,7 +63,7 @@ namespace Pyxie.FFXIStructures
             }
         }
 
-        struct NameStr
+        private struct NameStr
         {
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
             public String Name;
@@ -76,7 +76,6 @@ namespace Pyxie.FFXIStructures
         {
             get
             {
-
                 return Read<NameStr>("Name").Name;
             }
         }

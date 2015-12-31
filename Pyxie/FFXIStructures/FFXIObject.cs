@@ -24,22 +24,6 @@ namespace Pyxie.FFXIStructures
             BaseAddress = baseAddress;
         }
 
-        private TU StructFromPtr<TU>(IntPtr address)
-        {
-            TU structure = default(TU);
-
-            if(address != IntPtr.Zero)
-            {
-                int bytesRead;
-                byte[] _c = MemoryHandler.ReadAdress(address, (uint)Marshal.SizeOf(typeof(T)), out bytesRead);
-                GCHandle _h = GCHandle.Alloc(_c, GCHandleType.Pinned);
-                structure = (TU)Marshal.PtrToStructure(_h.AddrOfPinnedObject(), typeof(T));
-                _h.Free();
-            }
-
-            return structure;
-        }
-
 
         /// <summary>
         /// Reads a value of specified field from memory. Does NOT support type TX with unspecified size
@@ -47,7 +31,7 @@ namespace Pyxie.FFXIStructures
         /// <typeparam name="TX"></typeparam>
         /// <param name="field"></param>
         /// <returns></returns>
-        internal virtual TX Read<TX>(string field, int offset = 0)
+        internal virtual TX Read<TX>(string field)
         {
             IntPtr target = IntPtr.Add(BaseAddress, (int)Marshal.OffsetOf(typeof(T), field));
 
@@ -76,7 +60,7 @@ namespace Pyxie.FFXIStructures
 
                 MemoryHandler.WriteAddress(target, byteVal as byte[]);
             }
-            catch(AmbiguousMatchException e)
+            catch(AmbiguousMatchException)
             {
                 //Single byte
 

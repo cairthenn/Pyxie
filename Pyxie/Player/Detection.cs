@@ -80,7 +80,7 @@ namespace Pyxie
                 Entity Check = GetEntityByIndex(index);
 
                 if(Check != null)
-                {
+                {                    
                     if(!Check.IsNPC && Check.Name.Length > 0 && Check.ID != this.PlayerEntity.ID && Check.Distance < 2500)
                     {
                         if(Settings.UseExclusions && Globals.Instance.Pyxie.ExcludedPlayers.Any(n => Check.Name.ToLower().Equals(n.ToLower())))
