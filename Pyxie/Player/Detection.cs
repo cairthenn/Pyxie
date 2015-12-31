@@ -23,11 +23,13 @@ namespace Pyxie
                 {
                     // Excluded Zone: No Detection
                     this.Detected = false;
+                    this.DetectedText = "Zone Exclusion";
                 }
                 else if(Globals.Instance.Pyxie.IncludedZones.Any(z => Zones.Instance.ZoneMap[z].Contains(Zone)))
                 {
                     // Included Zone: Always Detect
                     this.Detected = true;
+                    this.DetectedText = "Zone Inclusion";
                 }
                 else if(PreviousZone != Zone)
                 {
@@ -118,7 +120,7 @@ namespace Pyxie
         /// <summary>
         /// Constant referring to the total possible entries in the MobArray.
         /// </summary>
-        public const int NPC_MAP_SIZE = 4096;
+        public const int NPC_MAP_SIZE = 2048;
 
         #region "Properties"
 
