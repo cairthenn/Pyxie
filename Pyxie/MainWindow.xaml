@@ -4,8 +4,38 @@
         xmlns:local="clr-namespace:Pyxie"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="Pyxie" Height="372" Width="525"
-        Name="PyxieWindow" IsMaxRestoreButtonEnabled="False" ShowMaxRestoreButton="False" Closing="PyxieWindow_Closing" Loaded="PyxieWindow_Loaded" Icon="pixie.ico" ResizeMode="CanMinimize" >
-
+        Name="PyxieWindow" IsMaxRestoreButtonEnabled="False" ShowMaxRestoreButton="False" Closing="PyxieWindow_Closing" Loaded="PyxieWindow_Loaded" Icon="pixie.ico" ResizeMode="CanMinimize"
+        GlowBrush="{DynamicResource AccentColorBrush}">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Menu Foreground="White" IsMainMenu="False" Background="{DynamicResource AccentColorBrush}">
+                <MenuItem Header="Theme" MaxHeight="400" ScrollViewer.CanContentScroll="True" IsTabStop="False">
+                    <MenuItem Header="Red" Foreground="White" FontSize="10" Click="themeRedClick"/>
+                    <MenuItem Header="Green" Foreground="White" FontSize="10" Click="themeGreenClick"/>
+                    <MenuItem Header="Blue" Foreground="White" FontSize="10" Click="themeBlueClick"/>
+                    <MenuItem Header="Purple" Foreground="White" FontSize="10" Click="themePurpleClick"/>
+                    <MenuItem Header="Orange" Foreground="White" FontSize="10" Click="themeOrangeClick"/>
+                    <MenuItem Header="Lime" Foreground="White" FontSize="10" Click="themeLimeClick"/>
+                    <MenuItem Header="Emerald" Foreground="White" FontSize="10" Click="themeEmeraldClick"/>
+                    <MenuItem Header="Teal" Foreground="White" FontSize="10" Click="themeTealClick"/>
+                    <MenuItem Header="Cyan" Foreground="White" FontSize="10" Click="themeCyanClick"/>
+                    <MenuItem Header="Cobalt" Foreground="White" FontSize="10" Click="themeCobaltClick"/>
+                    <MenuItem Header="Indigo" Foreground="White" FontSize="10" Click="themeIndigoClick"/>
+                    <MenuItem Header="Violet" Foreground="White" FontSize="10" Click="themeVioletClick"/>
+                    <MenuItem Header="Pink" Foreground="White" FontSize="10" Click="themePinkClick"/>
+                    <MenuItem Header="Magenta" Foreground="White" FontSize="10" Click="themeMagentaClick"/>
+                    <MenuItem Header="Crimson" Foreground="White" FontSize="10" Click="themeCrimsonClick"/>
+                    <MenuItem Header="Amber" Foreground="White" FontSize="10" Click="themeAmberClick"/>
+                    <MenuItem Header="Yellow" Foreground="White" FontSize="10" Click="themeYellowClick"/>
+                    <MenuItem Header="Brown" Foreground="White" FontSize="10" Click="themeBrownClick"/>
+                    <MenuItem Header="Olive" Foreground="White" FontSize="10" Click="themeOliveClick"/>
+                    <MenuItem Header="Steel" Foreground="White" FontSize="10" Click="themeSteelClick"/>
+                    <MenuItem Header="Mauve" Foreground="White" FontSize="10" Click="themeMauveClick"/>
+                    <MenuItem Header="Sienna" Foreground="White" FontSize="10" Click="themeSiennaClick"/>
+                </MenuItem>
+            </Menu>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
     <Grid Margin="5">
         <TabControl Margin="5,5,5,5" Background="#FF110202" Height="317" VerticalAlignment="Top">
             <TabItem x:Name="playerTab" Header="Players">

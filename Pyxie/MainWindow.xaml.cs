@@ -313,6 +313,150 @@ namespace Pyxie
         #endregion
 
 
+        #region "Theme/Accent Handling"
+
+        private void themeRedClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Red";
+            UpdateTheme();
+        }
+
+        private void themeGreenClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Green";
+            UpdateTheme();
+        }
+
+        private void themeBlueClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Blue";
+            UpdateTheme();
+        }
+
+        private void themePurpleClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Purple";
+            UpdateTheme();
+        }
+
+        private void themeOrangeClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Orange";
+            UpdateTheme();
+        }
+
+        private void themeLimeClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Lime";
+            UpdateTheme();
+        }
+
+        private void themeEmeraldClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Emerald";
+            UpdateTheme();
+        }
+
+        private void themeTealClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Teal";
+            UpdateTheme();
+        }
+
+        private void themeCyanClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Cyan";
+            UpdateTheme();
+        }
+
+        private void themeCobaltClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Cobalt";
+            UpdateTheme();
+        }
+
+        private void themeIndigoClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Indigo";
+            UpdateTheme();
+        }
+
+        private void themeVioletClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Violet";
+            UpdateTheme();
+        }
+
+        private void themePinkClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Pink";
+            UpdateTheme();
+        }
+
+        private void themeMagentaClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Magenta";
+            UpdateTheme();
+        }
+
+        private void themeCrimsonClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Crimson";
+            UpdateTheme();
+        }
+
+        private void themeAmberClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Amber";
+            UpdateTheme();
+        }
+
+        private void themeYellowClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Yellow";
+            UpdateTheme();
+        }
+
+        private void themeBrownClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Brown";
+            UpdateTheme();
+        }
+
+        private void themeOliveClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Olive";
+            UpdateTheme();
+        }
+
+        private void themeSteelClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Steel";
+            UpdateTheme();
+        }
+
+        private void themeMauveClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Mauve";
+            UpdateTheme();
+        }
+
+        private void themeSiennaClick(object sender, RoutedEventArgs e)
+        {
+            Globals.Instance.Pyxie.Accent = "Sienna";
+            UpdateTheme();
+        }
+
+        public void UpdateTheme()
+        {
+            if (ThemeManager.Accents.ToLookup(a => a.ToString())[Globals.Instance.Pyxie.Accent] != null
+                                                                      && Globals.Instance.Pyxie.Accent != null)
+            {
+                ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(Globals.Instance.Pyxie.Accent), ThemeManager.GetAppTheme("BaseDark"));
+            }
+        }
+
+        #endregion
 
 
 
