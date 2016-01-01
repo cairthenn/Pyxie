@@ -21,7 +21,11 @@ namespace Pyxie
         private bool useClientBlock_;
         private bool dangerMode_;
 
-
+        public PlayerSettings()
+        {
+            Speed = 5.0f;
+            DetectedSpeed = 5.0f;
+        }
 
         public bool UseJaZero {
             get { return useJaZero_; }
