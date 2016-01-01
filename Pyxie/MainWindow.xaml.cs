@@ -38,7 +38,7 @@ namespace Pyxie
 
 
         private void PyxieWindow_Loaded(object sender, RoutedEventArgs e)
-        {
+        {            
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Pyxie.xml"))
             {
                 try

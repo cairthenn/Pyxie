@@ -30,7 +30,7 @@ namespace Pyxie
                 else if(UseDetection && Detected)
                 {
                     if(!Globals.Instance.Pyxie.UseBoundDetectedMovement &&
-                        PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Bind")))
+                        PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))
                     {
                         Speed = 0;
                     }
@@ -49,7 +49,7 @@ namespace Pyxie
                 else
                 {
                     if(!Globals.Instance.Pyxie.UseBoundMovement && 
-                        PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Bind")))
+                        PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))
                     {
                         Speed = 0;
                     }
