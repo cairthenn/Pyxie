@@ -207,7 +207,10 @@ namespace Pyxie
                     {
                         if (!CurrentProcessList.Any(P => P.MainWindowTitle == FFXIChar.Name))
                         {
+                            FFXIChar.SaveSettings();
+                            FFXIChar.Destroy();
                             ActiveProcessList.Remove(FFXIChar);
+                            
                         }
 
                     }
