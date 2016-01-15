@@ -28,17 +28,22 @@ namespace Pyxie
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Engaged) == 0)
                         PlayerEntity.Status = EntityEnum.Status.Engaged;
                 }
+                else
+                {
+                    Update();
+                    //Returns you to dead status if you're dead, otherwise idle.
+                    //Look into this, the flags may have changed.
+
+                    if ((this.PlayerEntity.Flags1 & EntityEnum.Flags1.Dead) != 0)
+                        PlayerEntity.Status = EntityEnum.Status.Dead;
+                    else
+                        PlayerEntity.Status = EntityEnum.Status.Idle;
+                }
 
                 Thread.Sleep(100);
 
             }
 
-
-            //Returns you to dead status if you're dead, otherwise idle.
-            if ((this.PlayerEntity.Flags1 & EntityEnum.Flags1.Dead) != 0)
-                PlayerEntity.Status = EntityEnum.Status.Dead;
-            else
-                PlayerEntity.Status = EntityEnum.Status.Idle;
         }
 
 
