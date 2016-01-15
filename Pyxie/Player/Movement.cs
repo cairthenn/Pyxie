@@ -19,43 +19,46 @@ namespace Pyxie
 
         public void UpdateSpeed()
         {
-            while(UseSpeed && Active && !Globals.Exiting)
+            while(Active && !Globals.Exiting)
             {
-                this.Update();
+                if (Settings.UseSpeed)
+                {
+                    this.Update();
 
-                if(Globals.Instance.Pyxie.UseChocoboSpeed && PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Chocobo")))
-                {
-                    Speed = SPEED_CHOCOBO;
-                }
-                else if(Settings.UseDetection && Detected)
-                {
-                    if(!Globals.Instance.Pyxie.UseBoundDetectedMovement &&
-                        PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))
+                    if (Globals.Instance.Pyxie.UseChocoboSpeed && PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Chocobo")))
                     {
-                        Speed = 0;
+                        Speed = SPEED_CHOCOBO;
                     }
-                    else if(Settings.DetectedSpeed != Speed)
+                    else if (Settings.UseDetection && Detected)
                     {
-                        if(PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Flee")))
+                        if (!Globals.Instance.Pyxie.UseBoundDetectedMovement &&
+                            PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))
                         {
-                            Speed = SPEED_FLEE > Settings.DetectedSpeed ? SPEED_FLEE : Settings.DetectedSpeed;
+                            Speed = 0;
                         }
-                        else
+                        else if (Settings.DetectedSpeed != Speed)
                         {
-                            Speed = Settings.DetectedSpeed;
+                            if (PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Flee")))
+                            {
+                                Speed = SPEED_FLEE > Settings.DetectedSpeed ? SPEED_FLEE : Settings.DetectedSpeed;
+                            }
+                            else
+                            {
+                                Speed = Settings.DetectedSpeed;
+                            }
                         }
-                    }
-                }
-                else
-                {
-                    if(!Globals.Instance.Pyxie.UseBoundMovement && 
-                        PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))
-                    {
-                        Speed = 0;
                     }
                     else
                     {
-                        Speed = Settings.Speed;
+                        if (!Globals.Instance.Pyxie.UseBoundMovement &&
+                            PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))
+                        {
+                            Speed = 0;
+                        }
+                        else
+                        {
+                            Speed = Settings.Speed;
+                        }
                     }
                 }
 
@@ -87,33 +90,6 @@ namespace Pyxie
                 else
                     this.PlayerEntity.Speed = value;
 
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets whether to use movement speed. Handles thread creation.
-        /// </summary>
-        public bool UseSpeed
-        {
-            get
-            {
-                if (Settings.UseSpeed && SpeedThread == null)
-                {
-                    SpeedThread = new Thread(new ThreadStart(UpdateSpeed));
-                    SpeedThread.IsBackground = true;
-                    SpeedThread.Start();
-                }
-                return Settings.UseSpeed;
-            }
-            set
-            {
-                if (value)
-                {
-                    SpeedThread = new Thread(new ThreadStart(UpdateSpeed));
-                    SpeedThread.IsBackground = true;
-                    SpeedThread.Start();
-                }
-                Settings.UseSpeed = value;
             }
         }
 

@@ -12,6 +12,7 @@ namespace Pyxie
         public void UpdateStatus()
         {
             EntityEnum.Status SavedStatus = EntityEnum.Status.Idle;
+            bool ActiveStatus = false;
 
             while (Active && !Globals.Exiting)
             {
@@ -20,6 +21,7 @@ namespace Pyxie
                 if (Settings.UseClientBlock)
                 {
                     Update();
+                    ActiveStatus = true;
 
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Debug) == 0)
                     {
@@ -30,15 +32,17 @@ namespace Pyxie
                 else if(Settings.UseEngagedMode)
                 {
                     Update();
+                    ActiveStatus = true;
 
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Engaged) == 0)
                     {
                         PlayerEntity.Status = EntityEnum.Status.Engaged;
                     }
                 }
-                else
+                else if(ActiveStatus)
                 {
                     Update();
+                    ActiveStatus = false;
                     PlayerEntity.Status = SavedStatus;
                 }
 

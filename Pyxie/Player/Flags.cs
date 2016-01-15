@@ -11,10 +11,14 @@ namespace Pyxie
     {
         public void UpdateFlags()
         {
-            while(Active && Settings.DangerMode && !Globals.Exiting)
+            bool ActiveFlags = false;
+
+            while (Active && Settings.DangerMode && !Globals.Exiting)
             {
-                if (Settings.UseGM || Settings.UseMaintenance)
+
+                if ((Settings.UseMaintenance || Settings.UseGM))
                 {
+                    ActiveFlags = true;
                     this.Update();
 
                     int ResultFlag = (int)PlayerEntity.Flags3;
@@ -30,20 +34,24 @@ namespace Pyxie
                         ResultFlag -= (int)EntityEnum.Flags3.GM;
 
                     PlayerEntity.Flags3 = (EntityEnum.Flags3)ResultFlag;
+
+                }
+                else if(ActiveFlags)
+                {
+                    ActiveFlags = false;
+                    int FlagReset = (int)PlayerEntity.Flags3;
+
+                    if ((PlayerEntity.Flags3 & EntityEnum.Flags3.Maintenance) != 0)
+                        FlagReset -= (int)EntityEnum.Flags3.Maintenance;
+
+                    if ((PlayerEntity.Flags3 & EntityEnum.Flags3.GM) != 0)
+                        FlagReset -= (int)EntityEnum.Flags3.GM;
+
+                    PlayerEntity.Flags3 = (EntityEnum.Flags3)FlagReset;
                 }
 
                 Thread.Sleep(100);
             }
-
-            int FlagReset = (int)PlayerEntity.Flags3;
-
-            if((PlayerEntity.Flags3 & EntityEnum.Flags3.Maintenance) != 0)
-                FlagReset -= (int)EntityEnum.Flags3.Maintenance;
-
-            if ((PlayerEntity.Flags3 & EntityEnum.Flags3.GM) != 0)
-                FlagReset -= (int)EntityEnum.Flags3.GM;
-
-            PlayerEntity.Flags3 = (EntityEnum.Flags3)FlagReset;
         }
 
         #region =="Properties"
