@@ -11,33 +11,35 @@ namespace Pyxie
     {
         public void UpdateStatus()
         {
+            EntityEnum.Status SavedStatus = EntityEnum.Status.Idle;
+
             while (Active && !Globals.Exiting)
             {
+
 
                 if (Settings.UseClientBlock)
                 {
                     Update();
 
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Debug) == 0)
+                    {
+                        SavedStatus = PlayerEntity.Status;
                         PlayerEntity.Status = EntityEnum.Status.Debug;
+                    }
                 }
                 else if(Settings.UseEngagedMode)
                 {
                     Update();
 
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Engaged) == 0)
+                    {
                         PlayerEntity.Status = EntityEnum.Status.Engaged;
+                    }
                 }
                 else
                 {
                     Update();
-                    //Returns you to dead status if you're dead, otherwise idle.
-                    //Look into this, the flags may have changed.
-
-                    if ((this.PlayerEntity.Flags1 & EntityEnum.Flags1.Dead) != 0)
-                        PlayerEntity.Status = EntityEnum.Status.Dead;
-                    else
-                        PlayerEntity.Status = EntityEnum.Status.Idle;
+                    PlayerEntity.Status = SavedStatus;
                 }
 
                 Thread.Sleep(100);
