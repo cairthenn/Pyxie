@@ -8,6 +8,6 @@ A ZIP archive of the current version can be found [here](https://github.com/cair
 
 ### Change Log
 
-#### 1/14/2016
+#### 1/14/2016 : 1.0.0.1
 
 * Got rid of the archaic thread creation method that was borrowed from Cupper. This should remove the issue where when you click a button it occassionally does nothing.
