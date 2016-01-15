@@ -15,59 +15,62 @@ namespace Pyxie
         public void AutoDetection()
         {
 
-            while(UseDetection && Active && !Globals.Exiting)
+            while(Active && !Globals.Exiting)
             {
-                this.Update();
+                if (Settings.UseDetection)
+                {
+                    this.Update();
 
-                if(Globals.Instance.Pyxie.ExcludedZones.Any(z => Zones.Instance.ZoneMap[z].Contains(Zone)))
-                {
-                    // Excluded Zone: No Detection
-                    this.Detected = false;
-                    this.DetectedText = "Zone Exclusion";
-                }
-                else if(Globals.Instance.Pyxie.IncludedZones.Any(z => Zones.Instance.ZoneMap[z].Contains(Zone)))
-                {
-                    // Included Zone: Always Detect
-                    this.Detected = true;
-                    this.DetectedText = "Zone Inclusion";
-                }
-                else if(PreviousZone != Zone)
-                {
-                    if(Globals.Instance.Pyxie.UseZoneDelay)
+                    if (Globals.Instance.Pyxie.ExcludedZones.Any(z => Zones.Instance.ZoneMap[z].Contains(Zone)))
                     {
+                        // Excluded Zone: No Detection
+                        this.Detected = false;
+                        this.DetectedText = "Zone Exclusion";
+                    }
+                    else if (Globals.Instance.Pyxie.IncludedZones.Any(z => Zones.Instance.ZoneMap[z].Contains(Zone)))
+                    {
+                        // Included Zone: Always Detect
                         this.Detected = true;
-
-                        if(this.PreviousZone != -1)
+                        this.DetectedText = "Zone Inclusion";
+                    }
+                    else if (PreviousZone != Zone)
+                    {
+                        if (Globals.Instance.Pyxie.UseZoneDelay)
                         {
-                            for(int i = Globals.Instance.Pyxie.ZoneDelay; i > 0; i--)
+                            this.Detected = true;
+
+                            if (this.PreviousZone != -1)
                             {
-                                this.DetectedText = String.Format("Zone Delay: {0}", i);
-                                Thread.Sleep(1000);
+                                for (int i = Globals.Instance.Pyxie.ZoneDelay; i > 0; i--)
+                                {
+                                    this.DetectedText = String.Format("Zone Delay: {0}", i);
+                                    Thread.Sleep(1000);
+                                }
                             }
                         }
-                    }
 
-                    this.PreviousZone = this.Zone;
-                }
-                else if(Globals.Instance.Pyxie.DetectionWithoutInvisible && 
-                    !PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Invisible")))
-                {
-                    this.Detected = true;
-                    this.DetectedText = "Invisible Not Active";
-                }
-                else if (Globals.Instance.Pyxie.DetectionWithoutSneak &&
-                    !PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Sneak")))
-                {
-                    this.Detected = true;
-                    this.DetectedText = "Sneak Not Active";
-                }
-                else if(CheckForPlayers())
-                {
-                    this.Detected = true;
-                }
-                else
-                {
-                    this.Detected = false;
+                        this.PreviousZone = this.Zone;
+                    }
+                    else if (Globals.Instance.Pyxie.DetectionWithoutInvisible &&
+                        !PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Invisible")))
+                    {
+                        this.Detected = true;
+                        this.DetectedText = "Invisible Not Active";
+                    }
+                    else if (Globals.Instance.Pyxie.DetectionWithoutSneak &&
+                        !PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Sneak")))
+                    {
+                        this.Detected = true;
+                        this.DetectedText = "Sneak Not Active";
+                    }
+                    else if (CheckForPlayers())
+                    {
+                        this.Detected = true;
+                    }
+                    else
+                    {
+                        this.Detected = false;
+                    }
                 }
 
                 Thread.Sleep(100);
@@ -123,33 +126,6 @@ namespace Pyxie
         public const int NPC_MAP_SIZE = 2048;
 
         #region "Properties"
-
-        /// <summary>
-        /// Gets or sets whether to use detection. Handles thread creation.
-        /// </summary>
-        public Boolean UseDetection
-        {
-            get
-            {
-                if (Settings.UseDetection && DetectionThread == null)
-                {
-                    DetectionThread = new Thread(new ThreadStart(AutoDetection));
-                    DetectionThread.IsBackground = true;
-                    DetectionThread.Start();
-                }
-                return Settings.UseDetection;
-            }
-            set
-            {
-                if (value)
-                {
-                    DetectionThread = new Thread(new ThreadStart(AutoDetection));
-                    DetectionThread.IsBackground = true;
-                    DetectionThread.Start();
-                }
-                Settings.UseDetection = value;
-            }
-        }
 
         private String detectedText;
 

@@ -11,17 +11,20 @@ namespace Pyxie
     {
         public void UpdateStatus()
         {
-            while ((UseEngagedMode || UseClientBlock) && Active && !Globals.Exiting)
+            while (Active && !Globals.Exiting)
             {
-                this.Update();
 
-                if (UseClientBlock)
+                if (Settings.UseClientBlock)
                 {
+                    Update();
+
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Debug) == 0)
                         PlayerEntity.Status = EntityEnum.Status.Debug;
                 }
-                else if(UseEngagedMode)
+                else if(Settings.UseEngagedMode)
                 {
+                    Update();
+
                     if ((this.PlayerEntity.Status & EntityEnum.Status.Engaged) == 0)
                         PlayerEntity.Status = EntityEnum.Status.Engaged;
                 }
@@ -39,52 +42,6 @@ namespace Pyxie
         }
 
 
-
-        public bool UseEngagedMode {
-            get
-            {
-                if (Settings.UseEngagedMode && StatusThread == null)
-                {
-                    StatusThread = new Thread(new ThreadStart(UpdateStatus));
-                    StatusThread.IsBackground = true;
-                    StatusThread.Start();
-                }
-                return Settings.UseEngagedMode;
-            }
-            set
-            {
-                if (value && (StatusThread == null || !StatusThread.IsAlive))
-                {
-                    StatusThread = new Thread(new ThreadStart(UpdateStatus));
-                    StatusThread.IsBackground = true;
-                    StatusThread.Start();
-                }
-                Settings.UseEngagedMode = value;
-            }
-        }
-
-        public bool UseClientBlock {
-            get
-            {
-                if (Settings.UseClientBlock && StatusThread == null)
-                {
-                    StatusThread = new Thread(new ThreadStart(UpdateStatus));
-                    StatusThread.IsBackground = true;
-                    StatusThread.Start();
-                }
-                return Settings.UseClientBlock;
-            }
-            set
-            {
-                if (value && (StatusThread == null || !StatusThread.IsAlive))
-                {
-                    StatusThread = new Thread(new ThreadStart(UpdateStatus));
-                    StatusThread.IsBackground = true;
-                    StatusThread.Start();
-                }
-                Settings.UseClientBlock = value;
-            }
-        }
 
         public Thread StatusThread { get; set; }
     }

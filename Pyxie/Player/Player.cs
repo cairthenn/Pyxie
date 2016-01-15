@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 
 using Pyxie.Memory;
 using Pyxie.FFXIStructures;
+using System.Threading;
 
 
 namespace Pyxie
@@ -45,6 +46,30 @@ namespace Pyxie
             this.FindSignatures();
 
             this.LoadSettings();
+
+            //Create and initialize threads
+
+            this.DetectionThread = new Thread(new ThreadStart(AutoDetection));
+            this.DetectionThread.IsBackground = true;
+            this.DetectionThread.Start();
+
+            this.StatusThread = new Thread(new ThreadStart(UpdateStatus));
+            this.StatusThread.IsBackground = true;
+            this.StatusThread.Start();
+
+            this.FlagThread = new Thread(new ThreadStart(UpdateFlags));
+            this.FlagThread.IsBackground = true;
+            this.FlagThread.Start();
+
+            this.SpeedThread = new Thread(new ThreadStart(UpdateSpeed));
+            this.SpeedThread.IsBackground = true;
+            this.SpeedThread.Start();
+
+            this.JaZeroThread = new Thread(new ThreadStart(UpdateJaZero));
+            this.JaZeroThread.IsBackground = true;
+            this.JaZeroThread.Start();
+
+
 
             this.Update();
         }

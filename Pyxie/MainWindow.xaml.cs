@@ -55,6 +55,8 @@ namespace Pyxie
                     return;
                 }
             }
+
+            Version Current = typeof(MainWindow).Assembly.GetName().Version;
             
             ActiveProcessList = new ObservablePlayerCollection<Player>();
 

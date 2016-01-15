@@ -27,7 +27,7 @@ namespace Pyxie
                 {
                     Speed = SPEED_CHOCOBO;
                 }
-                else if(UseDetection && Detected)
+                else if(Settings.UseDetection && Detected)
                 {
                     if(!Globals.Instance.Pyxie.UseBoundDetectedMovement &&
                         PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))

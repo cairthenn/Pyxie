@@ -10,52 +10,23 @@ namespace Pyxie
     {
         public void UpdateJaZero()
         {
-            while (UseJaZero && Active && !Globals.Exiting)
+            while (Active && !Globals.Exiting)
             {
-                
-                Update();
-
-                if (!(Globals.Instance.Pyxie.UseJaZeroDetection && Detected))
+                if (Settings.UseJaZero)
                 {
-                    if (UseJaZero)
+                    Update();
+
+                    if (!(Globals.Instance.Pyxie.UseJaZeroDetection && Detected))
                     {
-                        PlayerDisplay.Freeze = false;
-                        PlayerEntity.Freeze = false;
-                    }
 
-
+                            PlayerDisplay.Freeze = false;
+                            PlayerEntity.Freeze = false;
+                     }
                 }
 
                 Thread.Sleep(100);
             }
-        }
 
-        /// <summary>
-        /// Gets or sets whether to use JA Zero. Handles thread creation.
-        /// </summary>
-        public bool UseJaZero
-        {
-            get
-            {
-                if (Settings.UseJaZero && JaZeroThread == null)
-                {
-                    JaZeroThread = new Thread(new ThreadStart(UpdateJaZero));
-                    JaZeroThread.IsBackground = true;
-                    JaZeroThread.Start();
-                }
-                return Settings.UseJaZero;
-            }
-            set
-            {
-                if (value && (JaZeroThread == null || !JaZeroThread.IsAlive))
-                {
-                    JaZeroThread = new Thread(new ThreadStart(UpdateJaZero));
-                    JaZeroThread.IsBackground = true;
-                    JaZeroThread.Start();
-                }
-
-                Settings.UseJaZero = value;
-            }
         }
 
         /// <summary>
