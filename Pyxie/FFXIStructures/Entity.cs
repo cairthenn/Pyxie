@@ -260,46 +260,42 @@ namespace EntityEnum
    [Flags]
     public enum Flags1 : uint
     {
-        Spawned         = 0x00000004,
-        Enemy           = 0x00000020,
-        Dead            = 0x00000400,
+        Spawned         = 0x00000200,
+        Enemy           = 0x00002000,
         Hidden          = 0x00004000,
+        Dead            = 0x00040000,
     };
     
     [Flags]
     public enum Flags2 : uint
     {
         Despawned       = 0x00000010,
-        Seeking         = 0x00001000,
-        Autogroup       = 0x00002000,
-        Away            = 0x00004000,
-        Anonymous       = 0x00008000,
-        Help            = 0x00010000,
-        TempLogged      = 0x00040000,
-        Linkshell       = 0x00080000,
-        ConnectionLost  = 0x00100000,
-        Sound           = 0x01000000,
-        Object          = 0x08000000,
-        Invisible       = 0x40000000,
-        Invisible2      = 0x80000000,
+        Seeking         = 0x00100000,
+        Autogroup       = 0x00200000,
+        Away            = 0x00400000,
+        Anonymous       = 0x00800000,
+        Help            = 0x01000000,
+        TempLogged      = 0x04000000,
+        Linkshell       = 0x08000000,
+        ConnectionLost  = 0x10000000,
+
     };
     
     [Flags]
     public enum Flags3 : uint
     {
-        Bazaar          = 0x00000020,
+        Object          = 0x00000008,
+        Bazaar          = 0x00000200,
         Promotion       = 0x00000800, 
         Promotion2      = 0x00001000, 
         TempLogged2     = 0x00001800,
         GM              = 0x00002000,
         Maintenance     = 0x00004000,
-        NameDeletion    = 0x80000000,
     };
     
     //[Flags]
     //public enum Field4 : uint
     //{
-    //    bytemed         = 0x00000020,
     //};
     
     //[Flags]
