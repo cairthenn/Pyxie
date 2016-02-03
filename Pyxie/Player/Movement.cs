@@ -19,6 +19,8 @@ namespace Pyxie
 
         public void UpdateSpeed()
         {
+            bool ChangedSpeed = false;
+
             while(Active && !Globals.Exiting)
             {
                 if (Settings.UseSpeed)
@@ -28,6 +30,7 @@ namespace Pyxie
                     if (Globals.Instance.Pyxie.UseChocoboSpeed && PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Chocobo")))
                     {
                         Speed = SPEED_CHOCOBO;
+                        ChangedSpeed = true;
                     }
                     else if (Settings.UseDetection && Detected)
                     {
@@ -35,16 +38,19 @@ namespace Pyxie
                             PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))
                         {
                             Speed = 0;
+                            ChangedSpeed = true;
                         }
                         else if (Settings.DetectedSpeed != Speed)
                         {
                             if (PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("Flee")))
                             {
                                 Speed = SPEED_FLEE > Settings.DetectedSpeed ? SPEED_FLEE : Settings.DetectedSpeed;
+                                ChangedSpeed = true;
                             }
                             else
                             {
                                 Speed = Settings.DetectedSpeed;
+                                ChangedSpeed = true;
                             }
                         }
                     }
@@ -54,18 +60,25 @@ namespace Pyxie
                             PlayerBuffs.BuffList.Any(b => Buffs.Lookup[b].Contains("bind")))
                         {
                             Speed = 0;
+                            ChangedSpeed = true;
                         }
                         else
                         {
                             Speed = Settings.Speed;
+                            ChangedSpeed = true;
                         }
                     }
+                }
+                else if(ChangedSpeed)
+                {
+                    Speed = SPEED_BASE;
+                    ChangedSpeed = false;
                 }
 
                 Thread.Sleep(100);
             }
 
-            Speed = SPEED_BASE;
+            
         }
 
 

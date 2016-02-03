@@ -48,7 +48,7 @@
                     <Label Content="Process Selection" HorizontalContentAlignment="Center" Margin="336,-6,10,0" VerticalAlignment="Top" Width="126"/>
                     <Grid Name="playerSettings" IsEnabled="False">
                         <Grid Margin="10,10,165,221">
-                            <ToggleButton Width="55" IsChecked="{Binding Settings.UseGM}" IsEnabled="{Binding Settings.DangerMode}"
+                            <ToggleButton Width="55" IsChecked="{Binding Settings.UseGM}"
                     		Height="55"
                     		Margin="0,0,242,0"
                     		Style="{DynamicResource MetroCircleToggleButtonStyle}" VerticalAlignment="Top">
