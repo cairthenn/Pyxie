@@ -13,10 +13,10 @@ namespace Pyxie
         {
             bool ActiveFlags = false;
 
-            while (Active && Settings.DangerMode && !Globals.Exiting)
+            while (Active && !Globals.Exiting)
             {
 
-                if ((Settings.UseMaintenance || Settings.UseGM))
+                if (((Settings.UseMaintenance && Settings.DangerMode) || Settings.UseGM))
                 {
                     ActiveFlags = true;
                     this.Update();
