@@ -222,9 +222,9 @@ namespace Pyxie.FFXIStructures
       [MarshalAs(UnmanagedType.U4)] [FieldOffset(0x120)] public EntityEnum.Flags1 Flags1;
       [MarshalAs(UnmanagedType.U4)] [FieldOffset(0x124)] public EntityEnum.Flags2 Flags2;
       [MarshalAs(UnmanagedType.U4)] [FieldOffset(0x128)] public EntityEnum.Flags3 Flags3;
-      [MarshalAs(UnmanagedType.R4)] [FieldOffset(0x158)] public float Speed;
-      [MarshalAs(UnmanagedType.I4)] [FieldOffset(0x168)] public EntityEnum.Status Status;
-      [MarshalAs(UnmanagedType.I1)] [FieldOffset(0x1C4)] public byte SpawnType;
+      [MarshalAs(UnmanagedType.R4)] [FieldOffset(0x15C)] public float Speed;
+      [MarshalAs(UnmanagedType.I4)] [FieldOffset(0x16C)] public EntityEnum.Status Status;
+      [MarshalAs(UnmanagedType.I1)] [FieldOffset(0x1C8)] public byte SpawnType;
     }
 
 
